@@ -1,0 +1,3661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="Owen Mao 的个人空间。保持好奇，创造下一种可能。">
+  <title>Owen Mao — 保持好奇</title>
+  <style>
+    :root {
+      --obsidian: #1d1d1f;
+      --frost: #f5f5f7;
+      --black: #000000;
+      --white: #ffffff;
+      --carbon: #111111;
+      --platinum: #86868b;
+      --graphite: #333336;
+      --silver: #cccccc;
+      --smoke: #424245;
+      --blue: #0071e3;
+      --link: #0066cc;
+      --halo: #2997ff;
+      --orange: #f56900;
+      --display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --text: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --max-width: 1440px;
+      --gutter: clamp(24px, 6.7vw, 100px);
+      --radius-card: 28px;
+      --radius-button: 36px;
+      --radius-pill: 980px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 104px; }
+    body { margin: 0; background: var(--black); color: var(--frost); font-family: var(--text); font-size: 17px; line-height: 1.47; letter-spacing: -.022em; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px solid var(--halo); outline-offset: 5px; border-radius: 10px; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
+    svg { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    ::selection { color: var(--white); background: var(--blue); }
+    .skip { position: fixed; z-index: 30; left: 24px; top: -100px; padding: 12px 20px; background: var(--blue); color: var(--white); border-radius: var(--radius-button); }
+    .skip:focus { top: 16px; }
+    .container { max-width: var(--max-width); margin-inline: auto; padding-inline: var(--gutter); }
+    .navigation { position: fixed; z-index: 20; inset: 16px 24px auto; }
+    .nav-inner { min-height: 60px; max-width: 1120px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 8px 28px; border: 1px solid var(--graphite); border-radius: var(--radius-pill); background: rgba(17,17,17,.84); -webkit-backdrop-filter: saturate(130%) blur(20px); backdrop-filter: saturate(130%) blur(20px); }
+    .brand { display: inline-flex; align-items: center; font-family: var(--display); font-size: 19px; font-weight: 600; letter-spacing: -.028em; white-space: nowrap; padding-block: 8px; }
+    .nav-links { display: flex; gap: 32px; align-items: center; font-size: 14px; line-height: 1.43; letter-spacing: -.016em; }
+    .nav-links a { color: #ceced2; padding-block: 10px; transition: color .2s; }
+    .nav-links a:hover, .nav-links a[aria-current="location"] { color: var(--white); }
+    .nav-links .nav-contact { display: flex; gap: 6px; align-items: center; }
+    .nav-contact svg { width: 15px; height: 15px; }
+    .hero { min-height: 840px; min-height: min(960px, 100svh); padding-top: 104px; padding-bottom: 80px; background: var(--black); }
+    .hero-visual { height: clamp(320px, 51vw, 540px); max-width: 1400px; margin: -8px auto -16px; overflow: hidden; }
+    .hero-visual img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+    .hero-copy { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; position: relative; }
+    .hero-kicker { color: var(--platinum); margin: 0 0 12px; font-size: 17px; font-weight: 600; letter-spacing: -.019em; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-family: var(--display); margin-bottom: 16px; font-size: clamp(56px, 6.1vw, 80px); font-weight: 700; line-height: 1.05; letter-spacing: -.003em; }
+    .hero-subtitle { margin: 0; font-family: var(--display); font-size: clamp(21px, 2.3vw, 28px); line-height: 1.4; font-weight: 500; letter-spacing: -.025em; }
+    .hero-actions { display: flex; align-items: center; gap: 24px; padding-bottom: 8px; flex-shrink: 0; }
+    .button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: var(--radius-button); background: var(--blue); color: var(--white); font-size: 14px; font-weight: 600; line-height: 1.43; letter-spacing: -.016em; transition: background-color .2s; }
+    .button:hover { background: #0077ed; }
+    .text-link { color: var(--halo); display: inline-flex; align-items: center; gap: 5px; min-height: 44px; font-size: 17px; line-height: 1.4; }
+    .text-link:hover span { text-decoration: underline; text-underline-offset: 4px; }
+    .text-link svg { width: 15px; height: 15px; }
+    .work-section { padding-block: 112px 120px; background: var(--black); }
+    .section-title { font-family: var(--display); font-size: clamp(36px, 4.3vw, 56px); line-height: 1.14; font-weight: 700; letter-spacing: -.015em; margin: 0 0 60px; }
+    .section-title .secondary { color: var(--platinum); }
+    .feature-card { margin: 0; position: relative; width: 100%; aspect-ratio: 1.85 / 1; min-height: 400px; background: var(--obsidian); border-radius: var(--radius-card); overflow: hidden; }
+    .feature-card > img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; }
+    .feature-copy { position: relative; z-index: 1; padding: clamp(28px, 4.5vw, 60px); max-width: 550px; }
+    .feature-label { color: var(--frost); font-size: 17px; line-height: 1.4; margin-bottom: 12px; font-weight: 600; }
+    .feature-copy h3 { margin-bottom: 20px; font-size: clamp(28px, 3vw, 40px); line-height: 1.18; letter-spacing: -.02em; font-weight: 600; font-family: var(--display); }
+    .feature-copy p:last-child { color: var(--frost); font-size: 17px; line-height: 1.6; max-width: 300px; }
+    .work-caption { display: flex; gap: 24px; justify-content: space-between; align-items: start; padding: 24px 4px 0; font-size: 14px; color: var(--platinum); line-height: 1.6; }
+    .work-caption p { margin: 0; }
+    .work-caption span { color: var(--silver); }
+    .about-section { background: var(--white); color: var(--obsidian); padding-block: 120px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(48px, 7.5vw, 108px); }
+    .about-visual { min-width: 0; aspect-ratio: 1 / 1.2; margin: 0; overflow: hidden; background: var(--frost); }
+    .about-visual img { width: 100%; height: 100%; object-fit: cover; object-position: 77% center; filter: grayscale(1); }
+    .category { color: var(--orange); font-weight: 600; font-size: 17px; line-height: 1.47; letter-spacing: -.011em; margin: 0 0 20px; }
+    .about-copy h2 { font-family: var(--display); font-size: clamp(36px, 4.3vw, 56px); font-weight: 700; line-height: 1.14; letter-spacing: -.015em; margin: 0 0 28px; }
+    .about-body { color: var(--platinum); font-weight: 400; line-height: 1.6; letter-spacing: -.02em; margin: 0 0 20px; max-width: none; }
+    .about-body strong { font-weight: 600; color: var(--obsidian); }
+    .about-note { color: #6e6e73; line-height: 1.7; margin-bottom: 32px; }
+    .about-body, .about-note { font-size: 20px; }
+    .inline-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: var(--obsidian); font-size: 17px; font-weight: 600; }
+    .inline-link .icon-circle { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid #d2d2d7; border-radius: var(--radius-pill); transition: background-color .2s; }
+    .inline-link:hover .icon-circle { background: var(--frost); }
+    .inline-link:hover .link-label { text-decoration: underline; text-underline-offset: 5px; }
+    .contact-section { color: var(--obsidian); background: var(--frost); padding-block: 104px 112px; }
+    .contact-content { max-width: 980px; }
+    .contact-kicker { font-size: 17px; font-weight: 600; color: #6e6e73; margin-bottom: 20px; }
+    .contact-title { font-family: var(--display); font-size: clamp(40px, 5vw, 64px); line-height: 1.13; font-weight: 700; letter-spacing: -.015em; margin-bottom: 28px; }
+    .contact-title span { color: var(--platinum); }
+    .contact-body { color: #6e6e73; font-size: 20px; line-height: 1.6; margin-bottom: 36px; }
+    .contact-line { display: inline-flex; align-items: center; gap: 12px; border-top: 1px solid #d2d2d7; padding-top: 24px; color: #6e6e73; font-size: 17px; }
+    .contact-line svg { color: var(--obsidian); }
+    .footer { background: var(--obsidian); color: var(--platinum); font-size: 14px; line-height: 1.6; padding-block: 32px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer p { margin: 0; }
+    .footer a { color: var(--silver); display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+    .footer svg { width: 16px; height: 16px; }
+    .footer a:hover { color: var(--frost); }
+    @media (max-width: 1000px) {
+      .hero { min-height: auto; padding-bottom: 76px; }
+      .hero-visual { height: 50vw; margin-bottom: 12px; }
+      .hero-copy { align-items: start; gap: 32px; }
+      .hero-actions { flex-direction: column; align-items: start; gap: 8px; padding-top: 44px; }
+      .section-title { margin-bottom: 40px; }
+      .work-section { padding-block: 88px 96px; }
+      .about-section { padding-block: 96px; }
+      .about-grid { gap: 40px; }
+      
+      .feature-copy { max-width: 430px; }
+      .feature-copy p:last-child { max-width: 240px; }
+    }
+    @media (max-width: 700px) {
+      :root { --gutter: 24px; }
+      html { scroll-padding-top: 88px; }
+      .navigation { inset: 12px 12px auto; }
+      .nav-inner { min-height: 56px; padding: 6px 20px; gap: 16px; }
+      .brand { font-size: 17px; }
+      .nav-links { gap: 20px; font-size: 14px; }
+      .nav-contact svg { display: none; }
+      .hero { padding-top: 108px; padding-bottom: 76px; }
+      .hero-visual { height: 62vw; min-height: 236px; margin-inline: 0; margin-bottom: 28px; overflow: hidden; }
+      .hero-visual img { width: 122%; max-width: none; margin-left: -11%; }
+      .hero-copy { flex-direction: column; gap: 28px; }
+      h1 { font-size: 56px; margin-bottom: 14px; }
+      .hero-kicker { font-size: 17px; margin-bottom: 12px; }
+      .hero-subtitle { font-size: 21px; max-width: 330px; }
+      .hero-actions { flex-direction: row; align-items: center; gap: 24px; padding: 0; }
+      .section-title { font-size: 36px; line-height: 1.2; margin-bottom: 36px; }
+      .work-section { padding-block: 12px 88px; }
+      .feature-card { aspect-ratio: 4 / 5; min-height: 480px; }
+      .feature-card > img { object-position: 42% center; }
+      .feature-copy { padding: 28px; max-width: 360px; }
+      .feature-copy h3 { font-size: 28px; max-width: 270px; }
+      .feature-copy p:last-child { max-width: 224px; font-size: 17px; }
+      .feature-label { font-size: 14px; }
+      .work-caption { flex-direction: column; gap: 8px; padding-top: 20px; }
+      .about-section { padding-block: 88px; }
+      .about-grid { display: flex; flex-direction: column-reverse; align-items: stretch; gap: 48px; }
+      .about-copy h2 { font-size: 40px; line-height: 1.18; }
+      .about-body { max-width: none; }
+      .about-note { margin-bottom: 24px; }
+      .about-visual { aspect-ratio: 1 / 1; }
+      .about-visual img { object-position: 78% center; }
+      .category { margin-bottom: 16px; }
+      .contact-section { padding-block: 80px 88px; }
+      .contact-title { font-size: 40px; line-height: 1.18; }
+      .contact-body { font-size: 20px; }
+      .footer { padding-block: 24px; }
+      .footer-inner { align-items: start; gap: 12px; font-size: 14px; }
+      .footer p { padding-block: 10px; max-width: 230px; }
+      .footer a { white-space: nowrap; }
+    }
+    @media (max-width: 380px) {
+      .nav-inner { padding-inline: 16px; gap: 12px; }
+      .nav-links { gap: 14px; }
+      .brand { font-size: 16px; }
+      .hero-visual { min-height: 205px; }
+      h1 { font-size: 48px; }
+      .hero-subtitle { font-size: 20px; }
+      .hero-actions { gap: 20px; }
+      .section-title { font-size: 32px; }
+      .feature-card { min-height: 460px; }
+      .feature-copy { padding: 28px; }
+      .contact-title { font-size: 36px; }
+      .footer-inner { flex-wrap: wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+    @media print {
+      .navigation, .hero-actions, .skip, .footer a { display: none; }
+      .hero { padding-top: 0; }
+      .hero-visual { height: 340px; }
+      .work-section, .about-section, .contact-section { padding-block: 48px; }
+      body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .feature-card, .about-grid { break-inside: avoid; }
+    }
+[hidden] { display: none !important; }
+button, input, textarea { font: inherit; letter-spacing: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; opacity: .55; }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--halo); outline-offset: 4px; }
+button { color: inherit; }
+body[data-editing="false"] [data-edit-only] { display: none !important; }
+body[data-editing="true"] { padding-bottom: 100px; }
+body:has(dialog[open]) { overflow: hidden; }
+.nav-inner { gap: 24px; }
+.nav-links { margin-left: auto; gap: 24px; }
+.social-links { display: flex; align-items: center; gap: 8px; border-left: 1px solid var(--graphite); padding-left: 20px; }
+.social-icon { position: relative; display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; color: var(--frost); border: 1px solid transparent; background: transparent; border-radius: 980px; transition: background .2s; }
+.social-icon:hover { background: var(--graphite); }
+.social-icon svg { width: 23px; height: 23px; }
+.social-icon.unconfigured { color: #a1a1a6; border-color: var(--graphite); }
+.hero-social-links { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 24px; max-width: 100%; }
+.hero-social-links .social-icon { display: inline-flex; gap: 8px; width: auto; height: auto; min-height: 44px; max-width: 100%; padding: 10px 0; border: 0; color: var(--halo); background: transparent; font-size: 17px; }
+.hero-social-links .social-icon svg { width: 22px; height: 22px; }
+.hero-social-links .social-label { max-width: 10em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hero-social-links .social-icon[data-platform="wechat"] { padding: 12px 24px; border-radius: var(--radius-button); background: var(--blue); color: var(--white); font-size: 14px; font-weight: 600; }
+.hero-social-links .social-icon[data-platform="wechat"]:hover { background: #0077ed; }
+.hero-social-links .social-icon[data-platform="github"]:hover .social-label { text-decoration: underline; text-underline-offset: 4px; }
+.hero-social-links .social-icon:disabled { cursor: default; opacity: 1; }
+.social-number { position: absolute; right: 1px; bottom: -1px; font-size: 12px; font-weight: 600; background: var(--carbon); padding-inline: 3px; border-radius: 10px; }
+.section-heading-row { display: flex; align-items: start; justify-content: space-between; gap: 24px; }
+.section-heading-row .edit-button { margin-top: 8px; flex-shrink: 0; }
+.edit-button, .cancel-button, .dock-button, .footer-edit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 9px 16px; border: 1px solid #4a4a4f; border-radius: 36px; background: transparent; color: var(--frost); font-size: 14px; line-height: 1.43; }
+.edit-button:hover, .dock-button:hover { background: #ffffff0d; }
+.about-heading-row { display: flex; gap: 16px; align-items: start; justify-content: space-between; margin-bottom: 20px; }
+.about-heading-row .category { margin: 8px 0 0; }
+.about-heading-row .edit-button { border-color: #d2d2d7; color: var(--obsidian); }
+.about-heading-row .edit-button:hover { background: var(--frost); }
+#about-title, #about-bio { white-space: pre-line; overflow-wrap: anywhere; }
+.about-visual img.has-custom-image { filter: none; object-position: center; }
+.portfolio-list { display: flex; flex-direction: column; gap: 36px; }
+.portfolio-list:not(:empty) { margin-top: 4px; }
+.portfolio-item { display: grid; grid-template-columns: 1.2fr 1fr; background: var(--carbon); border-radius: 28px; overflow: hidden; }
+.project-media { position: relative; overflow: hidden; min-width: 0; min-height: 360px; aspect-ratio: 1.4; background: var(--obsidian); display: grid; place-items: center; }
+.project-media img { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; object-fit: cover; }
+.no-cover { color: var(--platinum); font-size: 17px; }
+.project-content { padding: 40px; display: flex; align-items: start; flex-direction: column; justify-content: center; min-width: 0; }
+.project-category { color: var(--orange); font-size: 17px; font-weight: 600; margin-bottom: 16px; overflow-wrap: anywhere; }
+.project-title { font-family: var(--display); font-size: 32px; line-height: 1.2; margin-bottom: 20px; letter-spacing: -.02em; overflow-wrap: anywhere; }
+.project-description { color: var(--frost); font-size: 17px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+.project-controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.project-controls button { min-height: 40px; }
+.editor-dock { position: fixed; z-index: 24; bottom: 20px; left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100% - 32px); display: flex; align-items: center; gap: 12px; border: 1px solid var(--smoke); background: rgba(17,17,17,.95); color: var(--frost); border-radius: 28px; padding: 12px 16px; -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.save-indicator { display: flex; flex-direction: column; gap: 3px; margin-inline: 4px 16px; min-width: 0; }
+.save-indicator strong { font-size: 14px; font-weight: 600; }
+.save-indicator span { font-size: 12px; color: #a1a1a6; max-width: 270px; }
+.dock-button { border-color: transparent; white-space: nowrap; padding-inline: 12px; }
+.dock-save { background: var(--frost); color: var(--obsidian); border: 0; border-radius: 36px; min-height: 40px; padding: 10px 20px; white-space: nowrap; font-size: 14px; font-weight: 600; }
+.dock-save:hover { background: var(--white); }
+.footer-edit { border: 0; color: var(--silver); padding-inline: 8px; margin-left: auto; }
+.toast { position: fixed; z-index: 40; bottom: 110px; left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100% - 40px); padding: 16px 24px; border: 1px solid var(--smoke); background: var(--obsidian); color: var(--frost); border-radius: 28px; font-size: 14px; line-height: 1.6; text-align: center; }
+.editor-dialog { color-scheme: dark; width: min(660px, calc(100vw - 32px)); max-height: min(88svh, 920px); margin: auto; padding: 32px; border: 1px solid var(--graphite); border-radius: 28px; background: var(--carbon); color: var(--frost); overflow-y: auto; }
+.editor-dialog::backdrop { background: rgba(0,0,0,.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.dialog-heading { display: flex; align-items: start; justify-content: space-between; gap: 20px; margin-bottom: 28px; }
+.dialog-eyebrow { font-size: 14px; color: var(--platinum); margin-bottom: 8px; }
+.dialog-heading h2 { font-size: 28px; line-height: 1.25; margin: 0; font-family: var(--display); }
+.close-dialog { width: 40px; height: 40px; flex-shrink: 0; border: 0; border-radius: 980px; background: var(--graphite); color: var(--frost); font-size: 26px; line-height: 1; }
+.editor-dialog label { display: block; margin-bottom: 20px; font-size: 14px; line-height: 1.5; font-weight: 600; }
+.editor-dialog input:not([type="hidden"]), .editor-dialog textarea { display: block; width: 100%; margin-top: 8px; background: var(--obsidian); color: var(--frost); border: 1px solid var(--smoke); border-radius: 10px; padding: 12px 14px; font-size: 16px; line-height: 1.5; font-weight: 400; }
+.editor-dialog input::placeholder, .editor-dialog textarea::placeholder { color: #97979d; opacity: 1; }
+.editor-dialog textarea { resize: vertical; min-height: 80px; }
+.editor-dialog input[type="file"] { padding: 10px; font-size: 14px; }
+.editor-dialog input::file-selector-button { background: var(--graphite); border: 0; color: var(--frost); border-radius: 10px; padding: 8px 12px; margin-right: 12px; cursor: pointer; }
+.optional { font-size: 12px; color: #a1a1a6; font-weight: 400; margin-left: 10px; }
+.dialog-actions { display: flex; justify-content: end; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.editor-dialog .button { border: 0; }
+.dialog-actions .cancel-button { min-height: 44px; padding-inline: 24px; }
+.save-hint, .dialog-description { font-size: 14px; color: #a1a1a6; line-height: 1.7; margin: 16px 0 0; }
+.dialog-description { font-size: 16px; margin: 0 0 24px; }
+.form-error { color: #ffb4ab; font-size: 14px; line-height: 1.6; margin: 16px 0; }
+.image-preview { margin: 0 0 24px; }
+.image-preview img { max-height: 220px; width: 100%; object-fit: contain; background: var(--black); border-radius: 10px; margin-bottom: 12px; }
+.social-fieldset { border: 0; padding: 24px 0 4px; margin: 0; border-top: 1px solid var(--graphite); }
+.social-fieldset legend { float: left; width: 100%; color: var(--frost); font-size: 17px; font-weight: 600; margin-bottom: 16px; }
+.small-dialog { max-width: 480px; }
+.danger-button { min-height: 44px; border: 1px solid #76534f; background: transparent; color: #ffb4ab; border-radius: 36px; padding: 12px 24px; font-size: 14px; }
+@media (max-width: 900px) {
+  .nav-inner { gap: 16px; padding-inline: 20px; }
+  .nav-links { gap: 20px; }
+  .social-links { padding-left: 12px; gap: 4px; }
+  .project-content { padding: 28px; }
+  .project-title { font-size: 28px; }
+}
+@media (max-width: 700px) {
+  .hero-social-links { gap: 20px; }
+  .work-section { padding-block: 88px; }
+  html { scroll-padding-top: 136px; }
+  .nav-inner { display: grid; grid-template-columns: 1fr auto; border-radius: 28px; column-gap: 12px; row-gap: 0; padding: 8px 20px; }
+  .brand { grid-area: 1 / 1; }
+  .social-links { grid-area: 1 / 2; border: 0; padding-left: 0; gap: 6px; }
+  .social-icon { width: 36px; height: 36px; }
+  .nav-links { grid-area: 2 / 1 / 3 / 3; width: 100%; justify-content: space-between; gap: 24px; border-top: 1px solid var(--graphite); margin-top: 4px; }
+  .nav-links a { padding-block: 8px; }
+  .hero { padding-top: 144px; }
+  .section-heading-row { flex-direction: column; gap: 0; margin-bottom: 32px; }
+  .section-heading-row .section-title { margin-bottom: 20px; }
+  .section-heading-row .edit-button { margin-top: 0; }
+  .portfolio-item { display: flex; flex-direction: column; }
+  .project-media { min-height: 240px; aspect-ratio: 1.4; }
+  .project-media img { max-height: 440px; }
+  .editor-dock { width: calc(100% - 24px); max-width: 500px; flex-wrap: wrap; justify-content: space-between; bottom: 12px; padding: 12px 14px; gap: 6px; }
+  .save-indicator { width: 100%; margin: 0 4px 2px; flex-direction: row; align-items: baseline; flex-wrap: wrap; column-gap: 12px; }
+  .save-indicator span { max-width: none; }
+  .dock-button { padding-inline: 10px; }
+  .dock-save { margin-left: auto; }
+  .editor-dialog { padding: 24px; max-height: 90svh; }
+  .dialog-heading h2 { font-size: 24px; }
+  .optional { display: block; margin: 4px 0 0; }
+  .toast { bottom: 142px; }
+  body[data-editing="true"] { padding-bottom: 132px; }
+  .footer-inner { flex-wrap: wrap; }
+  .footer-edit { margin-left: 0; }
+}
+@media print { [data-edit-only], .footer-edit, .editor-dialog, .toast { display: none !important; } body[data-editing] { padding-bottom: 0; } }
+
+.about-content { display: grid; grid-template-columns: minmax(0, 1fr) 140px; align-items: start; gap: 28px 24px; min-width: 0; }
+.about-intro { grid-area: 1 / 1; min-width: 0; }
+.about-intro h2 { margin-bottom: 0; font-size: clamp(32px, 3.4vw, 48px); overflow-wrap: anywhere; }
+.about-details { grid-area: 2 / 1 / 3 / 3; min-width: 0; }
+.about-details .about-body, .about-details .about-note { max-width: none; white-space: pre-line; overflow-wrap: anywhere; }
+.about-portrait { grid-area: 1 / 2; padding-top: 4px; }
+.portrait-frame { width: 140px; aspect-ratio: 5 / 7; display: grid; place-items: center; border-radius: 12px; background: var(--frost); overflow: hidden; color: #8a8a8e; font-family: var(--display); font-size: 36px; font-weight: 600; letter-spacing: -.04em; }
+.portrait-frame img { width: 100%; height: 100%; object-fit: cover; }
+.about-portrait .edit-button { margin-top: 12px; padding-inline: 12px; color: var(--obsidian); border-color: #d2d2d7; }
+.about-heading-row { flex-wrap: wrap; }
+.articles-section { padding-block: 104px 112px; background: var(--carbon); }
+.articles-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
+.article-account { color: #a1a1a6; font-size: 17px; margin-bottom: 16px; }
+.articles-heading .section-title { margin: 0; }
+.articles-actions, .article-navigation { display: flex; align-items: center; gap: 12px; }
+.articles-actions { flex-wrap: wrap; justify-content: flex-end; }
+.article-arrow { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--smoke); border-radius: 50%; background: transparent; color: var(--frost); }
+.article-arrow:hover:not(:disabled) { background: var(--graphite); }
+.article-arrow:disabled { cursor: default; opacity: .3; }
+.article-list { display: flex; gap: 24px; overflow-x: auto; padding: 4px 0 24px; scroll-snap-type: x proximity; overscroll-behavior-inline: contain; scrollbar-width: thin; scrollbar-color: var(--smoke) transparent; }
+.article-list:focus-visible { outline: 2px solid var(--halo); outline-offset: 8px; }
+.article-card { flex: 0 0 min(380px, 85%); min-width: 0; min-height: 360px; display: flex; flex-direction: column; align-items: flex-start; padding: 32px; border: 1px solid var(--graphite); border-radius: 28px; background: var(--black); scroll-snap-align: start; }
+.article-date { font-size: 14px; color: #a1a1a6; margin-bottom: 24px; }
+.article-title { font-family: var(--display); font-size: 26px; line-height: 1.35; margin-bottom: 20px; overflow-wrap: anywhere; }
+.article-summary { color: #a1a1a6; font-size: 17px; line-height: 1.7; white-space: pre-line; overflow-wrap: anywhere; margin-bottom: 28px; }
+.article-read { margin-top: auto; }
+.articles-empty { padding-block: 24px; color: #a1a1a6; }
+.articles-empty p { margin-bottom: 12px; }
+.qr-dialog { max-width: 440px; color-scheme: light; background: var(--white); color: var(--obsidian); border: 0; }
+.qr-dialog .dialog-eyebrow { color: #6e6e73; }
+.qr-dialog .close-dialog { background: var(--frost); color: var(--obsidian); }
+.wechat-qr { width: min(100%, 280px); height: auto; aspect-ratio: 1; object-fit: contain; margin: 0 auto; background: white; }
+.qr-caption { margin: 20px 0 4px; text-align: center; color: #6e6e73; font-size: 16px; line-height: 1.6; }
+@media (max-width: 900px) {
+  .about-grid { display: flex; flex-direction: column-reverse; align-items: stretch; gap: 48px; }
+  .about-visual { aspect-ratio: 1 / 1; }
+}
+@media (max-width: 700px) {
+  .about-content { grid-template-columns: minmax(0, 1fr) 112px; column-gap: 16px; }
+  .about-intro h2 { font-size: clamp(28px, 6vw, 40px); line-height: 1.2; }
+  .portrait-frame { width: 112px; font-size: 32px; }
+  .articles-section { padding-block: 80px; }
+  .articles-heading { align-items: flex-start; flex-wrap: wrap; gap: 24px; margin-bottom: 28px; }
+  .articles-actions { justify-content: flex-start; }
+  .article-card { flex-basis: 87%; padding: 28px; }
+  .article-title { font-size: 24px; }
+  .nav-links { gap: 14px; }
+}
+@media (max-width: 380px) {
+  .about-content { grid-template-columns: minmax(0, 1fr) 104px; }
+  .about-intro h2 { font-size: 26px; }
+  .portrait-frame { width: 104px; }
+}
+
+  </style>
+<link rel="canonical" href="https://owenmao-builder.github.io/">
+</head>
+<body id="top" data-editing="false" data-github-pages="true" data-content-origin="https://owen-mao-portfolio.owenmao24.chatgpt.site">
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Owen Mao，返回首页">Owen Mao</a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#about">关于</a>
+        <a href="#work">作品</a>
+        <a href="#articles">文章</a>
+        <a href="#contact" class="nav-contact">联系 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </nav>
+      <div class="social-links" id="social-links" aria-label="微信公众号与 GitHub"></div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <figure class="hero-visual">
+        <img src="assets/om-titanium-hero.png" width="1672" height="941" alt="以钛金属质感呈现的 O 与 M 字母雕塑，置于纯黑背景上" fetchpriority="high" decoding="async">
+      </figure>
+      <div class="container hero-copy">
+        <div>
+          <p class="hero-kicker">我的个人空间</p>
+          <h1 id="hero-title">Owen Mao.</h1>
+          <p class="hero-subtitle">保持好奇，创造下一种可能。</p>
+        </div>
+        <div class="hero-actions hero-social-links" id="hero-social-links" aria-label="微信公众号与 GitHub"></div>
+      </div>
+    </section>
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <figure class="about-visual">
+          <img src="assets/editorial-notebook.png" width="1672" height="941" alt="黑白创作意象：用纸笔记录灵感" loading="eager" decoding="async">
+        </figure>
+        <div class="about-content">
+          <div class="about-copy about-intro">
+            <div class="about-heading-row"><p class="category">关于我</p><button class="edit-button" type="button" data-edit-only data-action="edit-about">编辑简介</button></div>
+            <h2 id="about-title">我是<br>Owen 毛天辰</h2>
+          </div>
+          <aside class="about-portrait" aria-label="个人头像">
+            <div class="portrait-frame"><img id="about-photo" width="140" height="196" alt="Owen Mao 的头像" decoding="async" hidden><span id="portrait-placeholder" aria-hidden="true">OM</span></div>
+            <button class="edit-button" type="button" data-edit-only data-action="edit-about">设置头像</button>
+          </aside>
+          <div class="about-details">
+            <p class="about-body" id="about-bio"><strong>欢迎来到我的个人空间。</strong>这里用来收集作品、记录想法，也认识有趣的人。</p>
+            <p class="about-note" id="about-note">个人经历与兴趣介绍，待补充。</p>
+            <a class="inline-link" href="#contact"><span class="icon-circle"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></svg></span><span class="link-label">开始一次交流</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <div class="section-heading-row"><h2 class="section-title" id="work-title">每一个想法，<br><span class="secondary">都值得再向前一步。</span></h2><button class="edit-button" type="button" data-edit-only data-action="add-project">＋ 添加作品</button></div>
+        <div id="portfolio-list" class="portfolio-list"></div>
+        <div id="portfolio-empty">
+        <!-- 配图为生成的创作意象，不代表 Owen Mao 的真实照片或已完成作品。 -->
+        <figure class="feature-card">
+          <img src="assets/editorial-notebook.png" width="1672" height="941" alt="黑白创作意象：一只手握着笔，准备在笔记本上写下想法" loading="eager" decoding="async">
+          <figcaption class="feature-copy">
+            <p class="feature-label">作品与探索</p>
+            <h3>从一笔开始。</h3>
+            <p>把一闪而过的灵感，<br>变成可以继续的开始。</p>
+          </figcaption>
+        </figure>
+        <div class="work-caption"><p><span>作品集</span> · 点击“添加作品”，放入你的第一件作品。</p><p>创作意象 / Concept image</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="articles-section" id="articles" aria-labelledby="articles-title">
+      <div class="container">
+        <div class="articles-heading">
+          <div><p class="article-account" id="article-account">OM创意工坊</p><h2 class="section-title" id="articles-title">公众号文章</h2></div>
+          <div class="articles-actions">
+            <button class="edit-button" type="button" data-edit-only data-action="add-article">＋ 添加文章</button>
+            <div class="article-navigation" id="article-navigation" hidden>
+              <button class="article-arrow" type="button" id="articles-prev" aria-label="查看前面的文章" aria-controls="article-list" data-action="scroll-articles" data-direction="-1"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></svg></button>
+              <button class="article-arrow" type="button" id="articles-next" aria-label="查看后面的文章" aria-controls="article-list" data-action="scroll-articles" data-direction="1"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="article-list" id="article-list" role="list" tabindex="0" aria-label="公众号文章，可横向滚动"></div>
+        <div class="articles-empty" id="articles-empty"><p>暂无文章。</p><p data-edit-only>添加文章的标题、摘要和原文链接。</p></div>
+      </div>
+    </section>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-content">
+          <p class="contact-kicker">保持联系</p>
+          <h2 class="contact-title" id="contact-title">下一次相遇。<br><span>也许，就是一个新开始。</span></h2>
+          <p class="contact-body">一个想法，一次交流，或是一句简单的你好。</p>
+          <!-- 补充真实邮箱后，将下方内容替换成可用的 mailto 链接。 -->
+          <div class="contact-line"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span id="contact-value">联系方式待补充。</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><p>Copyright © <span id="year">2026</span> <span id="footer-name">Owen Mao</span>.</p><button class="footer-edit" type="button" data-action="toggle-edit" aria-pressed="true">预览网页</button><a id="public-site-link" data-edit-only href="#" target="_blank" rel="noopener" hidden>查看个人网站</a><a href="#top">回到顶部 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></a></div></footer>
+  <aside class="editor-dock" data-edit-only aria-label="网页编辑工具">
+    <div class="save-indicator"><strong>编辑模式</strong><span id="save-status">修改后，记得保存网页文件</span></div>
+    <button class="dock-button" type="button" data-action="edit-social">社交链接</button>
+    <button class="dock-button" type="button" data-action="toggle-edit">预览</button>
+    <button class="dock-button" type="button" id="export-site" data-action="export-site" hidden>导出 HTML</button>
+    <button class="dock-button" type="button" id="admin-logout" data-action="admin-logout" hidden>退出管理</button>
+    <button class="dock-save" type="button" id="save-site" data-action="save-site">保存网页</button>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <dialog class="editor-dialog small-dialog" id="admin-dialog" aria-labelledby="admin-title">
+    <form id="admin-form">
+      <div class="dialog-heading"><div><p class="dialog-eyebrow">OM 创意工坊</p><h2 id="admin-title">管理我的网站</h2></div><button class="close-dialog" type="button" data-close aria-label="关闭管理登录">×</button></div>
+      <p class="dialog-description">输入管理密码，即可更新文章、作品和个人介绍。</p>
+      <label>管理密码<input id="admin-password" type="password" autocomplete="current-password" required maxlength="256"></label>
+      <p class="form-error" id="admin-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="cancel-button" type="button" data-close>取消</button><button class="button" type="submit" id="admin-submit">进入管理</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="editor-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+    <form id="project-form">
+      <div class="dialog-heading"><div><p class="dialog-eyebrow">作品集</p><h2 id="project-dialog-title">添加作品</h2></div><button class="close-dialog" type="button" data-close aria-label="关闭作品编辑">×</button></div>
+      <input id="project-id" type="hidden">
+      <label>作品名称<input id="project-title" required maxlength="80" placeholder="为作品取一个名字"></label>
+      <label>分类<span class="optional">选填</span><input id="project-category" maxlength="40" placeholder="例如：产品设计、摄影、文章"></label>
+      <label>作品介绍<textarea id="project-description" maxlength="2000" rows="4" placeholder="介绍它的背景、你的思考和完成的内容"></textarea></label>
+      <label>作品链接<span class="optional">选填</span><input id="project-url" type="url" maxlength="2048" placeholder="https://"></label>
+      <label>封面图片<span class="optional">PNG / JPG / WebP / GIF，最大 12 MB</span><input id="project-image" type="file" accept="image/png,image/jpeg,image/webp,image/gif"></label>
+      <div class="image-preview" id="project-image-preview" hidden><img alt="作品封面预览"><button type="button" class="edit-button" data-action="remove-project-image">移除图片</button></div>
+      <p class="form-error" id="project-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="cancel-button" type="button" data-close>取消</button><button class="button" type="submit">应用修改</button></div>
+      <p class="save-hint">应用后，点击底部“保存网页”，将内容和图片存入 HTML 文件。</p>
+    </form>
+  </dialog>
+
+  <dialog class="editor-dialog" id="about-dialog" aria-labelledby="about-dialog-title">
+    <form id="about-form">
+      <div class="dialog-heading"><div><p class="dialog-eyebrow">关于我</p><h2 id="about-dialog-title">写下你的介绍。</h2></div><button class="close-dialog" type="button" data-close aria-label="关闭个人简介编辑">×</button></div>
+      <label>姓名<input id="profile-name" required maxlength="80"></label>
+      <label>首页名称<input id="profile-heroName" required maxlength="80" placeholder="Owen Mao"></label>
+      <label>首页的一句话<input id="profile-tagline" maxlength="160"></label>
+      <label>简介标题<textarea id="profile-heading" rows="2" required maxlength="120"></textarea></label>
+      <label>个人介绍<textarea id="profile-bio" rows="6" required maxlength="5000" placeholder="你的经历、兴趣，或想分享的故事"></textarea></label>
+      <label>补充说明<span class="optional">选填，可留空</span><input id="profile-note" maxlength="200"></label>
+      <label>联系邮箱<span class="optional">选填</span><input id="profile-email" type="email" maxlength="254" placeholder="you@example.com"></label>
+      <label>个人照片<span class="optional">建议使用接近两寸证件照的竖版照片，宽高比 5:7，最大 12 MB</span><input id="profile-image" type="file" accept="image/png,image/jpeg,image/webp,image/gif"></label>
+      <div class="image-preview" id="profile-image-preview" hidden><img alt="头像预览"><button class="edit-button" type="button" data-action="remove-profile-image">移除头像</button></div>
+      <p class="form-error" id="about-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="cancel-button" type="button" data-close>取消</button><button class="button" type="submit">应用修改</button></div>
+      <p class="save-hint">应用后，点击底部“保存网页”，保留你的修改。</p>
+    </form>
+  </dialog>
+
+  <dialog class="editor-dialog" id="social-dialog" aria-labelledby="social-dialog-title">
+    <form id="social-form">
+      <div class="dialog-heading"><div><p class="dialog-eyebrow">首页页眉</p><h2 id="social-dialog-title">微信公众号与 GitHub</h2></div><button class="close-dialog" type="button" data-close aria-label="关闭社交链接编辑">×</button></div>
+      <p class="dialog-description">公众号入口展示关注二维码；GitHub 入口跳转至你的主页。</p>
+      <div id="social-fields"></div>
+      <label>公众号二维码<span class="optional">选填；不上传时，使用主页链接生成二维码</span><input id="wechat-qr-image" type="file" accept="image/png,image/jpeg,image/webp,image/gif"></label>
+      <div class="image-preview" id="wechat-qr-image-preview" hidden><img alt="公众号二维码预览"><button class="edit-button" type="button" data-action="remove-wechat-qr">改用主页链接生成</button></div>
+      <p class="save-hint">可上传微信公众平台提供的官方关注二维码。应用修改后，请保存网页。</p>
+      <p class="form-error" id="social-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="cancel-button" type="button" data-close>取消</button><button class="button" type="submit">应用修改</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="editor-dialog" id="article-dialog" aria-labelledby="article-dialog-title">
+    <form id="article-form">
+      <div class="dialog-heading"><div><p class="dialog-eyebrow">公众号文章</p><h2 id="article-dialog-title">添加文章</h2></div><button class="close-dialog" type="button" data-close aria-label="关闭文章编辑">×</button></div>
+      <input id="article-id" type="hidden">
+      <label>文章标题<input id="article-title" required maxlength="160"></label>
+      <label>摘要<textarea id="article-summary" required maxlength="1200" rows="4"></textarea></label>
+      <label>原文链接<input id="article-url" type="url" required maxlength="2048" placeholder="https://mp.weixin.qq.com/s/…"></label>
+      <label>发布日期<span class="optional">选填</span><input id="article-date" type="date"></label>
+      <p class="form-error" id="article-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="cancel-button" type="button" data-close>取消</button><button class="button" type="submit">应用修改</button></div>
+      <p class="save-hint">应用后点击“保存网页”。新增文章保存在列表最前面。</p>
+    </form>
+  </dialog>
+
+  <dialog class="editor-dialog qr-dialog" id="wechat-dialog" aria-labelledby="wechat-dialog-title">
+    <div class="dialog-heading"><div><p class="dialog-eyebrow">微信公众号</p><h2 id="wechat-dialog-title">OM创意工坊</h2></div><button class="close-dialog" type="button" data-close aria-label="关闭公众号二维码">×</button></div>
+    <img class="wechat-qr" id="wechat-qr" alt="公众号二维码" width="280" height="280">
+    <p class="qr-caption" id="wechat-qr-caption">用微信扫一扫，进入公众号主页并关注。</p>
+  </dialog>
+
+  <dialog class="editor-dialog small-dialog" id="delete-dialog" aria-labelledby="delete-title">
+    <div class="dialog-heading"><h2 id="delete-title">删除这件作品？</h2><button class="close-dialog" type="button" data-close aria-label="取消删除">×</button></div>
+    <p id="delete-description" class="dialog-description"></p>
+    <div class="dialog-actions"><button class="cancel-button" type="button" data-close>取消</button><button class="danger-button" type="button" id="confirm-delete">删除</button></div>
+  </dialog>
+
+  <script id="site-data" type="application/json">{"version":4,"profile":{"name":"毛天辰","heroName":"Owen Mao","tagline":"保持好奇，创造下一种可能。","heading":"我是\nOwen 毛天辰","bio":"职业背景：我曾作为德勤管理咨询的技术架构与转型顾问，为近十家企业提供专业的技术平台规划与落地服务，曾担任ERP项目的 Cutover Manager/Solution Module Lead等核心岗位。后因对AI的熟练掌握，多次受邀参与公司内部的AI技能分享会，并以核心方案顾问兼联调项目经理的身份推进并完成AI Agent落地项目。","note":"职业以外：我作为上海市格致中学青年校友会的核心创始人之一，0-1搭建了校友会的校友资源部门、产品部门、数据部门，组织目前已有超100名活跃成员，经常开展各类知识分享讲座、圆桌酒会等活动。我的公众号稳定每周2-3篇产品拆解与行业洞察，视频号不定期直播探讨前沿科技走势与个人发展","email":"owenmao24@gmail.com","image":""},"projects":[{"id":"2f89d1e4-31d8-4d71-bbd6-5137b7d3fd84","title":"同好会","category":"平台网站","description":"同好会是一款类似Dating App的线上匹配运动平台，通过基于兴趣标签的匹配机制，以及场馆合作等限制，让用户只需简单交互，便可享受运动的乐趣。\n产品愿景：上海有20w空心白领，他们白天穿着得体，用华丽的PPT和Stanley的保温杯装点精致的工作氛围，他们活在朋友圈的健康生活和多邻国的打卡记录里，回到家推开门，却找不到一个真心的朋友。运动是五层关系网络中，最贴近亲密伙伴的联系，我希望能通过我搭建的软件，和我作为创始人之一的校友会，帮这20w人点亮房间里的烛火。","url":"https://tonghao-club-demo.owenmao24.chatgpt.site/","image":""},{"id":"d2c15bef-5e69-4592-bfda-6159c86fb1f8","title":"Love Language","category":"实用工具","description":"Love Language是一款情绪翻译器，让用户可以拨开负面情绪的外衣，真切的听到伴侣、家人、朋友的善意与真心，并且复盘用户自己语言中的刺，学会温暖的表达。\n产品愿景：中国的社会背景下，太多人不会正确的表达需求与关心，心里的“我好想你”，到嘴边却变成了“你在外面是不是有人了”，从小没有被好好照顾的真心，长大却成为了刺向伴侣的刀。Love Language以《非暴力沟通》为基础，收集了数千条中国社会中常见的“变质关心”，希望能给“刀子嘴豆腐心”们一次复盘的机会，让真诚被看见，把爱与温暖还给家庭。","url":"","image":""}],"socials":[{"type":"wechat","name":"OM创意工坊","url":"https://mp.weixin.qq.com/mp/profile_ext?action=home\u0026__biz=MzY4NTQyNzczNw==\u0026scene=124#wechat_redirect"},{"type":"github","name":"GitHub","url":"https://github.com/owenmao-builder"}],"articles":[{"id":"wechat-lopkJ7HxU7CTDR-qS7UCHw","title":"一年150万封客服邮件，SAP Joule的生意到底卡在哪","summary":"从博世的工单分流、人事自助和财务流程切入，对比 SAP Joule 与 Agentforce 的业务价值，分析省下工时为何未必带来持续付费，以及实施成本、任务边界和收入披露的影响。","url":"https://mp.weixin.qq.com/s/lopkJ7HxU7CTDR-qS7UCHw","date":"2026-09-07"},{"id":"wechat-jgqUQpMmGF-Hjka1ovPmjA","title":"4个月，3200个商机，Agentforce凭什么让人“回不去”","summary":"从 Salesforce、销售易和客户案例出发，拆解 Agent 如何参与线索跟进、CRM 录入与客户协作，并从市场、商业、体验和技术等六个层面，分析持续使用与付费的逻辑。","url":"https://mp.weixin.qq.com/s/jgqUQpMmGF-Hjka1ovPmjA","date":"2026-09-05"},{"id":"wechat-SVgkEku_R0JMXWYbQYLbFw","title":"Jasper（原Javis）AI产品全生命周期拆解","summary":"从广告文案工具起步，到面对 ChatGPT 的冲击转向企业营销平台，回顾 Jasper 的产品迭代、增长方式与收费变化，探讨模型能力普及后，AI 应用凭什么让客户持续付费。","url":"https://mp.weixin.qq.com/s/SVgkEku_R0JMXWYbQYLbFw","date":"2026-08-31"},{"id":"wechat-A50cFczj1fjIqdeiYQTPdg","title":"说个暴论，现在被大厂轮番裁员的这部分岗位，其实早该被裁了","summary":"报告、会议和流程留痕为何容易变成“假工作”？从组织激励和真实业务结果出发，讨论引入 AI 前如何先质疑、删除和简化无效动作，再让 Agent 接手有价值的任务。","url":"https://mp.weixin.qq.com/s/A50cFczj1fjIqdeiYQTPdg","date":"2026-08-30"},{"id":"wechat-QzwzoOXgiPdfJAWhGWdi3w","title":"AI都来了，企业的技术平台还有用吗？","summary":"企业技术平台如何从记录流程、保存组织经验，转变为 AI 的上下文与工具入口？结合数字化项目经历，讨论多 Agent 协作、专家经验沉淀，以及人的判断、责任与信任。","url":"https://mp.weixin.qq.com/s/QzwzoOXgiPdfJAWhGWdi3w","date":"2026-08-29"}]}</script>
+  <script id="asset-bundle" type="application/json">{}</script>
+  <script>
+/*
+qrcode-generator 1.4.4
+Copyright (c) 2009 Kazuhiko Arase
+Source: https://www.npmjs.com/package/qrcode-generator/v/1.4.4
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
+//---------------------------------------------------------------------
+//
+// QR Code Generator for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//  http://www.opensource.org/licenses/mit-license.php
+//
+// The word 'QR Code' is registered trademark of
+// DENSO WAVE INCORPORATED
+//  http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+
+var qrcode = function() {
+
+  //---------------------------------------------------------------------
+  // qrcode
+  //---------------------------------------------------------------------
+
+  /**
+   * qrcode
+   * @param typeNumber 1 to 40
+   * @param errorCorrectionLevel 'L','M','Q','H'
+   */
+  var qrcode = function(typeNumber, errorCorrectionLevel) {
+
+    var PAD0 = 0xEC;
+    var PAD1 = 0x11;
+
+    var _typeNumber = typeNumber;
+    var _errorCorrectionLevel = QRErrorCorrectionLevel[errorCorrectionLevel];
+    var _modules = null;
+    var _moduleCount = 0;
+    var _dataCache = null;
+    var _dataList = [];
+
+    var _this = {};
+
+    var makeImpl = function(test, maskPattern) {
+
+      _moduleCount = _typeNumber * 4 + 17;
+      _modules = function(moduleCount) {
+        var modules = new Array(moduleCount);
+        for (var row = 0; row < moduleCount; row += 1) {
+          modules[row] = new Array(moduleCount);
+          for (var col = 0; col < moduleCount; col += 1) {
+            modules[row][col] = null;
+          }
+        }
+        return modules;
+      }(_moduleCount);
+
+      setupPositionProbePattern(0, 0);
+      setupPositionProbePattern(_moduleCount - 7, 0);
+      setupPositionProbePattern(0, _moduleCount - 7);
+      setupPositionAdjustPattern();
+      setupTimingPattern();
+      setupTypeInfo(test, maskPattern);
+
+      if (_typeNumber >= 7) {
+        setupTypeNumber(test);
+      }
+
+      if (_dataCache == null) {
+        _dataCache = createData(_typeNumber, _errorCorrectionLevel, _dataList);
+      }
+
+      mapData(_dataCache, maskPattern);
+    };
+
+    var setupPositionProbePattern = function(row, col) {
+
+      for (var r = -1; r <= 7; r += 1) {
+
+        if (row + r <= -1 || _moduleCount <= row + r) continue;
+
+        for (var c = -1; c <= 7; c += 1) {
+
+          if (col + c <= -1 || _moduleCount <= col + c) continue;
+
+          if ( (0 <= r && r <= 6 && (c == 0 || c == 6) )
+              || (0 <= c && c <= 6 && (r == 0 || r == 6) )
+              || (2 <= r && r <= 4 && 2 <= c && c <= 4) ) {
+            _modules[row + r][col + c] = true;
+          } else {
+            _modules[row + r][col + c] = false;
+          }
+        }
+      }
+    };
+
+    var getBestMaskPattern = function() {
+
+      var minLostPoint = 0;
+      var pattern = 0;
+
+      for (var i = 0; i < 8; i += 1) {
+
+        makeImpl(true, i);
+
+        var lostPoint = QRUtil.getLostPoint(_this);
+
+        if (i == 0 || minLostPoint > lostPoint) {
+          minLostPoint = lostPoint;
+          pattern = i;
+        }
+      }
+
+      return pattern;
+    };
+
+    var setupTimingPattern = function() {
+
+      for (var r = 8; r < _moduleCount - 8; r += 1) {
+        if (_modules[r][6] != null) {
+          continue;
+        }
+        _modules[r][6] = (r % 2 == 0);
+      }
+
+      for (var c = 8; c < _moduleCount - 8; c += 1) {
+        if (_modules[6][c] != null) {
+          continue;
+        }
+        _modules[6][c] = (c % 2 == 0);
+      }
+    };
+
+    var setupPositionAdjustPattern = function() {
+
+      var pos = QRUtil.getPatternPosition(_typeNumber);
+
+      for (var i = 0; i < pos.length; i += 1) {
+
+        for (var j = 0; j < pos.length; j += 1) {
+
+          var row = pos[i];
+          var col = pos[j];
+
+          if (_modules[row][col] != null) {
+            continue;
+          }
+
+          for (var r = -2; r <= 2; r += 1) {
+
+            for (var c = -2; c <= 2; c += 1) {
+
+              if (r == -2 || r == 2 || c == -2 || c == 2
+                  || (r == 0 && c == 0) ) {
+                _modules[row + r][col + c] = true;
+              } else {
+                _modules[row + r][col + c] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+
+    var setupTypeNumber = function(test) {
+
+      var bits = QRUtil.getBCHTypeNumber(_typeNumber);
+
+      for (var i = 0; i < 18; i += 1) {
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+        _modules[Math.floor(i / 3)][i % 3 + _moduleCount - 8 - 3] = mod;
+      }
+
+      for (var i = 0; i < 18; i += 1) {
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+        _modules[i % 3 + _moduleCount - 8 - 3][Math.floor(i / 3)] = mod;
+      }
+    };
+
+    var setupTypeInfo = function(test, maskPattern) {
+
+      var data = (_errorCorrectionLevel << 3) | maskPattern;
+      var bits = QRUtil.getBCHTypeInfo(data);
+
+      // vertical
+      for (var i = 0; i < 15; i += 1) {
+
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+
+        if (i < 6) {
+          _modules[i][8] = mod;
+        } else if (i < 8) {
+          _modules[i + 1][8] = mod;
+        } else {
+          _modules[_moduleCount - 15 + i][8] = mod;
+        }
+      }
+
+      // horizontal
+      for (var i = 0; i < 15; i += 1) {
+
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+
+        if (i < 8) {
+          _modules[8][_moduleCount - i - 1] = mod;
+        } else if (i < 9) {
+          _modules[8][15 - i - 1 + 1] = mod;
+        } else {
+          _modules[8][15 - i - 1] = mod;
+        }
+      }
+
+      // fixed module
+      _modules[_moduleCount - 8][8] = (!test);
+    };
+
+    var mapData = function(data, maskPattern) {
+
+      var inc = -1;
+      var row = _moduleCount - 1;
+      var bitIndex = 7;
+      var byteIndex = 0;
+      var maskFunc = QRUtil.getMaskFunction(maskPattern);
+
+      for (var col = _moduleCount - 1; col > 0; col -= 2) {
+
+        if (col == 6) col -= 1;
+
+        while (true) {
+
+          for (var c = 0; c < 2; c += 1) {
+
+            if (_modules[row][col - c] == null) {
+
+              var dark = false;
+
+              if (byteIndex < data.length) {
+                dark = ( ( (data[byteIndex] >>> bitIndex) & 1) == 1);
+              }
+
+              var mask = maskFunc(row, col - c);
+
+              if (mask) {
+                dark = !dark;
+              }
+
+              _modules[row][col - c] = dark;
+              bitIndex -= 1;
+
+              if (bitIndex == -1) {
+                byteIndex += 1;
+                bitIndex = 7;
+              }
+            }
+          }
+
+          row += inc;
+
+          if (row < 0 || _moduleCount <= row) {
+            row -= inc;
+            inc = -inc;
+            break;
+          }
+        }
+      }
+    };
+
+    var createBytes = function(buffer, rsBlocks) {
+
+      var offset = 0;
+
+      var maxDcCount = 0;
+      var maxEcCount = 0;
+
+      var dcdata = new Array(rsBlocks.length);
+      var ecdata = new Array(rsBlocks.length);
+
+      for (var r = 0; r < rsBlocks.length; r += 1) {
+
+        var dcCount = rsBlocks[r].dataCount;
+        var ecCount = rsBlocks[r].totalCount - dcCount;
+
+        maxDcCount = Math.max(maxDcCount, dcCount);
+        maxEcCount = Math.max(maxEcCount, ecCount);
+
+        dcdata[r] = new Array(dcCount);
+
+        for (var i = 0; i < dcdata[r].length; i += 1) {
+          dcdata[r][i] = 0xff & buffer.getBuffer()[i + offset];
+        }
+        offset += dcCount;
+
+        var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+        var rawPoly = qrPolynomial(dcdata[r], rsPoly.getLength() - 1);
+
+        var modPoly = rawPoly.mod(rsPoly);
+        ecdata[r] = new Array(rsPoly.getLength() - 1);
+        for (var i = 0; i < ecdata[r].length; i += 1) {
+          var modIndex = i + modPoly.getLength() - ecdata[r].length;
+          ecdata[r][i] = (modIndex >= 0)? modPoly.getAt(modIndex) : 0;
+        }
+      }
+
+      var totalCodeCount = 0;
+      for (var i = 0; i < rsBlocks.length; i += 1) {
+        totalCodeCount += rsBlocks[i].totalCount;
+      }
+
+      var data = new Array(totalCodeCount);
+      var index = 0;
+
+      for (var i = 0; i < maxDcCount; i += 1) {
+        for (var r = 0; r < rsBlocks.length; r += 1) {
+          if (i < dcdata[r].length) {
+            data[index] = dcdata[r][i];
+            index += 1;
+          }
+        }
+      }
+
+      for (var i = 0; i < maxEcCount; i += 1) {
+        for (var r = 0; r < rsBlocks.length; r += 1) {
+          if (i < ecdata[r].length) {
+            data[index] = ecdata[r][i];
+            index += 1;
+          }
+        }
+      }
+
+      return data;
+    };
+
+    var createData = function(typeNumber, errorCorrectionLevel, dataList) {
+
+      var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectionLevel);
+
+      var buffer = qrBitBuffer();
+
+      for (var i = 0; i < dataList.length; i += 1) {
+        var data = dataList[i];
+        buffer.put(data.getMode(), 4);
+        buffer.put(data.getLength(), QRUtil.getLengthInBits(data.getMode(), typeNumber) );
+        data.write(buffer);
+      }
+
+      // calc num max data.
+      var totalDataCount = 0;
+      for (var i = 0; i < rsBlocks.length; i += 1) {
+        totalDataCount += rsBlocks[i].dataCount;
+      }
+
+      if (buffer.getLengthInBits() > totalDataCount * 8) {
+        throw 'code length overflow. ('
+          + buffer.getLengthInBits()
+          + '>'
+          + totalDataCount * 8
+          + ')';
+      }
+
+      // end code
+      if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+        buffer.put(0, 4);
+      }
+
+      // padding
+      while (buffer.getLengthInBits() % 8 != 0) {
+        buffer.putBit(false);
+      }
+
+      // padding
+      while (true) {
+
+        if (buffer.getLengthInBits() >= totalDataCount * 8) {
+          break;
+        }
+        buffer.put(PAD0, 8);
+
+        if (buffer.getLengthInBits() >= totalDataCount * 8) {
+          break;
+        }
+        buffer.put(PAD1, 8);
+      }
+
+      return createBytes(buffer, rsBlocks);
+    };
+
+    _this.addData = function(data, mode) {
+
+      mode = mode || 'Byte';
+
+      var newData = null;
+
+      switch(mode) {
+      case 'Numeric' :
+        newData = qrNumber(data);
+        break;
+      case 'Alphanumeric' :
+        newData = qrAlphaNum(data);
+        break;
+      case 'Byte' :
+        newData = qr8BitByte(data);
+        break;
+      case 'Kanji' :
+        newData = qrKanji(data);
+        break;
+      default :
+        throw 'mode:' + mode;
+      }
+
+      _dataList.push(newData);
+      _dataCache = null;
+    };
+
+    _this.isDark = function(row, col) {
+      if (row < 0 || _moduleCount <= row || col < 0 || _moduleCount <= col) {
+        throw row + ',' + col;
+      }
+      return _modules[row][col];
+    };
+
+    _this.getModuleCount = function() {
+      return _moduleCount;
+    };
+
+    _this.make = function() {
+      if (_typeNumber < 1) {
+        var typeNumber = 1;
+
+        for (; typeNumber < 40; typeNumber++) {
+          var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, _errorCorrectionLevel);
+          var buffer = qrBitBuffer();
+
+          for (var i = 0; i < _dataList.length; i++) {
+            var data = _dataList[i];
+            buffer.put(data.getMode(), 4);
+            buffer.put(data.getLength(), QRUtil.getLengthInBits(data.getMode(), typeNumber) );
+            data.write(buffer);
+          }
+
+          var totalDataCount = 0;
+          for (var i = 0; i < rsBlocks.length; i++) {
+            totalDataCount += rsBlocks[i].dataCount;
+          }
+
+          if (buffer.getLengthInBits() <= totalDataCount * 8) {
+            break;
+          }
+        }
+
+        _typeNumber = typeNumber;
+      }
+
+      makeImpl(false, getBestMaskPattern() );
+    };
+
+    _this.createTableTag = function(cellSize, margin) {
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      var qrHtml = '';
+
+      qrHtml += '<table style="';
+      qrHtml += ' border-width: 0px; border-style: none;';
+      qrHtml += ' border-collapse: collapse;';
+      qrHtml += ' padding: 0px; margin: ' + margin + 'px;';
+      qrHtml += '">';
+      qrHtml += '<tbody>';
+
+      for (var r = 0; r < _this.getModuleCount(); r += 1) {
+
+        qrHtml += '<tr>';
+
+        for (var c = 0; c < _this.getModuleCount(); c += 1) {
+          qrHtml += '<td style="';
+          qrHtml += ' border-width: 0px; border-style: none;';
+          qrHtml += ' border-collapse: collapse;';
+          qrHtml += ' padding: 0px; margin: 0px;';
+          qrHtml += ' width: ' + cellSize + 'px;';
+          qrHtml += ' height: ' + cellSize + 'px;';
+          qrHtml += ' background-color: ';
+          qrHtml += _this.isDark(r, c)? '#000000' : '#ffffff';
+          qrHtml += ';';
+          qrHtml += '"/>';
+        }
+
+        qrHtml += '</tr>';
+      }
+
+      qrHtml += '</tbody>';
+      qrHtml += '</table>';
+
+      return qrHtml;
+    };
+
+    _this.createSvgTag = function(cellSize, margin, alt, title) {
+
+      var opts = {};
+      if (typeof arguments[0] == 'object') {
+        // Called by options.
+        opts = arguments[0];
+        // overwrite cellSize and margin.
+        cellSize = opts.cellSize;
+        margin = opts.margin;
+        alt = opts.alt;
+        title = opts.title;
+      }
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      // Compose alt property surrogate
+      alt = (typeof alt === 'string') ? {text: alt} : alt || {};
+      alt.text = alt.text || null;
+      alt.id = (alt.text) ? alt.id || 'qrcode-description' : null;
+
+      // Compose title property surrogate
+      title = (typeof title === 'string') ? {text: title} : title || {};
+      title.text = title.text || null;
+      title.id = (title.text) ? title.id || 'qrcode-title' : null;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var c, mc, r, mr, qrSvg='', rect;
+
+      rect = 'l' + cellSize + ',0 0,' + cellSize +
+        ' -' + cellSize + ',0 0,-' + cellSize + 'z ';
+
+      qrSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"';
+      qrSvg += !opts.scalable ? ' width="' + size + 'px" height="' + size + 'px"' : '';
+      qrSvg += ' viewBox="0 0 ' + size + ' ' + size + '" ';
+      qrSvg += ' preserveAspectRatio="xMinYMin meet"';
+      qrSvg += (title.text || alt.text) ? ' role="img" aria-labelledby="' +
+          escapeXml([title.id, alt.id].join(' ').trim() ) + '"' : '';
+      qrSvg += '>';
+      qrSvg += (title.text) ? '<title id="' + escapeXml(title.id) + '">' +
+          escapeXml(title.text) + '</title>' : '';
+      qrSvg += (alt.text) ? '<description id="' + escapeXml(alt.id) + '">' +
+          escapeXml(alt.text) + '</description>' : '';
+      qrSvg += '<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>';
+      qrSvg += '<path d="';
+
+      for (r = 0; r < _this.getModuleCount(); r += 1) {
+        mr = r * cellSize + margin;
+        for (c = 0; c < _this.getModuleCount(); c += 1) {
+          if (_this.isDark(r, c) ) {
+            mc = c*cellSize+margin;
+            qrSvg += 'M' + mc + ',' + mr + rect;
+          }
+        }
+      }
+
+      qrSvg += '" stroke="transparent" fill="black"/>';
+      qrSvg += '</svg>';
+
+      return qrSvg;
+    };
+
+    _this.createDataURL = function(cellSize, margin) {
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var min = margin;
+      var max = size - margin;
+
+      return createDataURL(size, size, function(x, y) {
+        if (min <= x && x < max && min <= y && y < max) {
+          var c = Math.floor( (x - min) / cellSize);
+          var r = Math.floor( (y - min) / cellSize);
+          return _this.isDark(r, c)? 0 : 1;
+        } else {
+          return 1;
+        }
+      } );
+    };
+
+    _this.createImgTag = function(cellSize, margin, alt) {
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+
+      var img = '';
+      img += '<img';
+      img += '\u0020src="';
+      img += _this.createDataURL(cellSize, margin);
+      img += '"';
+      img += '\u0020width="';
+      img += size;
+      img += '"';
+      img += '\u0020height="';
+      img += size;
+      img += '"';
+      if (alt) {
+        img += '\u0020alt="';
+        img += escapeXml(alt);
+        img += '"';
+      }
+      img += '/>';
+
+      return img;
+    };
+
+    var escapeXml = function(s) {
+      var escaped = '';
+      for (var i = 0; i < s.length; i += 1) {
+        var c = s.charAt(i);
+        switch(c) {
+        case '<': escaped += '&lt;'; break;
+        case '>': escaped += '&gt;'; break;
+        case '&': escaped += '&amp;'; break;
+        case '"': escaped += '&quot;'; break;
+        default : escaped += c; break;
+        }
+      }
+      return escaped;
+    };
+
+    var _createHalfASCII = function(margin) {
+      var cellSize = 1;
+      margin = (typeof margin == 'undefined')? cellSize * 2 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var min = margin;
+      var max = size - margin;
+
+      var y, x, r1, r2, p;
+
+      var blocks = {
+        '██': '█',
+        '█ ': '▀',
+        ' █': '▄',
+        '  ': ' '
+      };
+
+      var blocksLastLineNoMargin = {
+        '██': '▀',
+        '█ ': '▀',
+        ' █': ' ',
+        '  ': ' '
+      };
+
+      var ascii = '';
+      for (y = 0; y < size; y += 2) {
+        r1 = Math.floor((y - min) / cellSize);
+        r2 = Math.floor((y + 1 - min) / cellSize);
+        for (x = 0; x < size; x += 1) {
+          p = '█';
+
+          if (min <= x && x < max && min <= y && y < max && _this.isDark(r1, Math.floor((x - min) / cellSize))) {
+            p = ' ';
+          }
+
+          if (min <= x && x < max && min <= y+1 && y+1 < max && _this.isDark(r2, Math.floor((x - min) / cellSize))) {
+            p += ' ';
+          }
+          else {
+            p += '█';
+          }
+
+          // Output 2 characters per pixel, to create full square. 1 character per pixels gives only half width of square.
+          ascii += (margin < 1 && y+1 >= max) ? blocksLastLineNoMargin[p] : blocks[p];
+        }
+
+        ascii += '\n';
+      }
+
+      if (size % 2 && margin > 0) {
+        return ascii.substring(0, ascii.length - size - 1) + Array(size+1).join('▀');
+      }
+
+      return ascii.substring(0, ascii.length-1);
+    };
+
+    _this.createASCII = function(cellSize, margin) {
+      cellSize = cellSize || 1;
+
+      if (cellSize < 2) {
+        return _createHalfASCII(margin);
+      }
+
+      cellSize -= 1;
+      margin = (typeof margin == 'undefined')? cellSize * 2 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var min = margin;
+      var max = size - margin;
+
+      var y, x, r, p;
+
+      var white = Array(cellSize+1).join('██');
+      var black = Array(cellSize+1).join('  ');
+
+      var ascii = '';
+      var line = '';
+      for (y = 0; y < size; y += 1) {
+        r = Math.floor( (y - min) / cellSize);
+        line = '';
+        for (x = 0; x < size; x += 1) {
+          p = 1;
+
+          if (min <= x && x < max && min <= y && y < max && _this.isDark(r, Math.floor((x - min) / cellSize))) {
+            p = 0;
+          }
+
+          // Output 2 characters per pixel, to create full square. 1 character per pixels gives only half width of square.
+          line += p ? white : black;
+        }
+
+        for (r = 0; r < cellSize; r += 1) {
+          ascii += line + '\n';
+        }
+      }
+
+      return ascii.substring(0, ascii.length-1);
+    };
+
+    _this.renderTo2dContext = function(context, cellSize) {
+      cellSize = cellSize || 2;
+      var length = _this.getModuleCount();
+      for (var row = 0; row < length; row++) {
+        for (var col = 0; col < length; col++) {
+          context.fillStyle = _this.isDark(row, col) ? 'black' : 'white';
+          context.fillRect(row * cellSize, col * cellSize, cellSize, cellSize);
+        }
+      }
+    }
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrcode.stringToBytes
+  //---------------------------------------------------------------------
+
+  qrcode.stringToBytesFuncs = {
+    'default' : function(s) {
+      var bytes = [];
+      for (var i = 0; i < s.length; i += 1) {
+        var c = s.charCodeAt(i);
+        bytes.push(c & 0xff);
+      }
+      return bytes;
+    }
+  };
+
+  qrcode.stringToBytes = qrcode.stringToBytesFuncs['default'];
+
+  //---------------------------------------------------------------------
+  // qrcode.createStringToBytes
+  //---------------------------------------------------------------------
+
+  /**
+   * @param unicodeData base64 string of byte array.
+   * [16bit Unicode],[16bit Bytes], ...
+   * @param numChars
+   */
+  qrcode.createStringToBytes = function(unicodeData, numChars) {
+
+    // create conversion map.
+
+    var unicodeMap = function() {
+
+      var bin = base64DecodeInputStream(unicodeData);
+      var read = function() {
+        var b = bin.read();
+        if (b == -1) throw 'eof';
+        return b;
+      };
+
+      var count = 0;
+      var unicodeMap = {};
+      while (true) {
+        var b0 = bin.read();
+        if (b0 == -1) break;
+        var b1 = read();
+        var b2 = read();
+        var b3 = read();
+        var k = String.fromCharCode( (b0 << 8) | b1);
+        var v = (b2 << 8) | b3;
+        unicodeMap[k] = v;
+        count += 1;
+      }
+      if (count != numChars) {
+        throw count + ' != ' + numChars;
+      }
+
+      return unicodeMap;
+    }();
+
+    var unknownChar = '?'.charCodeAt(0);
+
+    return function(s) {
+      var bytes = [];
+      for (var i = 0; i < s.length; i += 1) {
+        var c = s.charCodeAt(i);
+        if (c < 128) {
+          bytes.push(c);
+        } else {
+          var b = unicodeMap[s.charAt(i)];
+          if (typeof b == 'number') {
+            if ( (b & 0xff) == b) {
+              // 1byte
+              bytes.push(b);
+            } else {
+              // 2bytes
+              bytes.push(b >>> 8);
+              bytes.push(b & 0xff);
+            }
+          } else {
+            bytes.push(unknownChar);
+          }
+        }
+      }
+      return bytes;
+    };
+  };
+
+  //---------------------------------------------------------------------
+  // QRMode
+  //---------------------------------------------------------------------
+
+  var QRMode = {
+    MODE_NUMBER :    1 << 0,
+    MODE_ALPHA_NUM : 1 << 1,
+    MODE_8BIT_BYTE : 1 << 2,
+    MODE_KANJI :     1 << 3
+  };
+
+  //---------------------------------------------------------------------
+  // QRErrorCorrectionLevel
+  //---------------------------------------------------------------------
+
+  var QRErrorCorrectionLevel = {
+    L : 1,
+    M : 0,
+    Q : 3,
+    H : 2
+  };
+
+  //---------------------------------------------------------------------
+  // QRMaskPattern
+  //---------------------------------------------------------------------
+
+  var QRMaskPattern = {
+    PATTERN000 : 0,
+    PATTERN001 : 1,
+    PATTERN010 : 2,
+    PATTERN011 : 3,
+    PATTERN100 : 4,
+    PATTERN101 : 5,
+    PATTERN110 : 6,
+    PATTERN111 : 7
+  };
+
+  //---------------------------------------------------------------------
+  // QRUtil
+  //---------------------------------------------------------------------
+
+  var QRUtil = function() {
+
+    var PATTERN_POSITION_TABLE = [
+      [],
+      [6, 18],
+      [6, 22],
+      [6, 26],
+      [6, 30],
+      [6, 34],
+      [6, 22, 38],
+      [6, 24, 42],
+      [6, 26, 46],
+      [6, 28, 50],
+      [6, 30, 54],
+      [6, 32, 58],
+      [6, 34, 62],
+      [6, 26, 46, 66],
+      [6, 26, 48, 70],
+      [6, 26, 50, 74],
+      [6, 30, 54, 78],
+      [6, 30, 56, 82],
+      [6, 30, 58, 86],
+      [6, 34, 62, 90],
+      [6, 28, 50, 72, 94],
+      [6, 26, 50, 74, 98],
+      [6, 30, 54, 78, 102],
+      [6, 28, 54, 80, 106],
+      [6, 32, 58, 84, 110],
+      [6, 30, 58, 86, 114],
+      [6, 34, 62, 90, 118],
+      [6, 26, 50, 74, 98, 122],
+      [6, 30, 54, 78, 102, 126],
+      [6, 26, 52, 78, 104, 130],
+      [6, 30, 56, 82, 108, 134],
+      [6, 34, 60, 86, 112, 138],
+      [6, 30, 58, 86, 114, 142],
+      [6, 34, 62, 90, 118, 146],
+      [6, 30, 54, 78, 102, 126, 150],
+      [6, 24, 50, 76, 102, 128, 154],
+      [6, 28, 54, 80, 106, 132, 158],
+      [6, 32, 58, 84, 110, 136, 162],
+      [6, 26, 54, 82, 110, 138, 166],
+      [6, 30, 58, 86, 114, 142, 170]
+    ];
+    var G15 = (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0);
+    var G18 = (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0);
+    var G15_MASK = (1 << 14) | (1 << 12) | (1 << 10) | (1 << 4) | (1 << 1);
+
+    var _this = {};
+
+    var getBCHDigit = function(data) {
+      var digit = 0;
+      while (data != 0) {
+        digit += 1;
+        data >>>= 1;
+      }
+      return digit;
+    };
+
+    _this.getBCHTypeInfo = function(data) {
+      var d = data << 10;
+      while (getBCHDigit(d) - getBCHDigit(G15) >= 0) {
+        d ^= (G15 << (getBCHDigit(d) - getBCHDigit(G15) ) );
+      }
+      return ( (data << 10) | d) ^ G15_MASK;
+    };
+
+    _this.getBCHTypeNumber = function(data) {
+      var d = data << 12;
+      while (getBCHDigit(d) - getBCHDigit(G18) >= 0) {
+        d ^= (G18 << (getBCHDigit(d) - getBCHDigit(G18) ) );
+      }
+      return (data << 12) | d;
+    };
+
+    _this.getPatternPosition = function(typeNumber) {
+      return PATTERN_POSITION_TABLE[typeNumber - 1];
+    };
+
+    _this.getMaskFunction = function(maskPattern) {
+
+      switch (maskPattern) {
+
+      case QRMaskPattern.PATTERN000 :
+        return function(i, j) { return (i + j) % 2 == 0; };
+      case QRMaskPattern.PATTERN001 :
+        return function(i, j) { return i % 2 == 0; };
+      case QRMaskPattern.PATTERN010 :
+        return function(i, j) { return j % 3 == 0; };
+      case QRMaskPattern.PATTERN011 :
+        return function(i, j) { return (i + j) % 3 == 0; };
+      case QRMaskPattern.PATTERN100 :
+        return function(i, j) { return (Math.floor(i / 2) + Math.floor(j / 3) ) % 2 == 0; };
+      case QRMaskPattern.PATTERN101 :
+        return function(i, j) { return (i * j) % 2 + (i * j) % 3 == 0; };
+      case QRMaskPattern.PATTERN110 :
+        return function(i, j) { return ( (i * j) % 2 + (i * j) % 3) % 2 == 0; };
+      case QRMaskPattern.PATTERN111 :
+        return function(i, j) { return ( (i * j) % 3 + (i + j) % 2) % 2 == 0; };
+
+      default :
+        throw 'bad maskPattern:' + maskPattern;
+      }
+    };
+
+    _this.getErrorCorrectPolynomial = function(errorCorrectLength) {
+      var a = qrPolynomial([1], 0);
+      for (var i = 0; i < errorCorrectLength; i += 1) {
+        a = a.multiply(qrPolynomial([1, QRMath.gexp(i)], 0) );
+      }
+      return a;
+    };
+
+    _this.getLengthInBits = function(mode, type) {
+
+      if (1 <= type && type < 10) {
+
+        // 1 - 9
+
+        switch(mode) {
+        case QRMode.MODE_NUMBER    : return 10;
+        case QRMode.MODE_ALPHA_NUM : return 9;
+        case QRMode.MODE_8BIT_BYTE : return 8;
+        case QRMode.MODE_KANJI     : return 8;
+        default :
+          throw 'mode:' + mode;
+        }
+
+      } else if (type < 27) {
+
+        // 10 - 26
+
+        switch(mode) {
+        case QRMode.MODE_NUMBER    : return 12;
+        case QRMode.MODE_ALPHA_NUM : return 11;
+        case QRMode.MODE_8BIT_BYTE : return 16;
+        case QRMode.MODE_KANJI     : return 10;
+        default :
+          throw 'mode:' + mode;
+        }
+
+      } else if (type < 41) {
+
+        // 27 - 40
+
+        switch(mode) {
+        case QRMode.MODE_NUMBER    : return 14;
+        case QRMode.MODE_ALPHA_NUM : return 13;
+        case QRMode.MODE_8BIT_BYTE : return 16;
+        case QRMode.MODE_KANJI     : return 12;
+        default :
+          throw 'mode:' + mode;
+        }
+
+      } else {
+        throw 'type:' + type;
+      }
+    };
+
+    _this.getLostPoint = function(qrcode) {
+
+      var moduleCount = qrcode.getModuleCount();
+
+      var lostPoint = 0;
+
+      // LEVEL1
+
+      for (var row = 0; row < moduleCount; row += 1) {
+        for (var col = 0; col < moduleCount; col += 1) {
+
+          var sameCount = 0;
+          var dark = qrcode.isDark(row, col);
+
+          for (var r = -1; r <= 1; r += 1) {
+
+            if (row + r < 0 || moduleCount <= row + r) {
+              continue;
+            }
+
+            for (var c = -1; c <= 1; c += 1) {
+
+              if (col + c < 0 || moduleCount <= col + c) {
+                continue;
+              }
+
+              if (r == 0 && c == 0) {
+                continue;
+              }
+
+              if (dark == qrcode.isDark(row + r, col + c) ) {
+                sameCount += 1;
+              }
+            }
+          }
+
+          if (sameCount > 5) {
+            lostPoint += (3 + sameCount - 5);
+          }
+        }
+      };
+
+      // LEVEL2
+
+      for (var row = 0; row < moduleCount - 1; row += 1) {
+        for (var col = 0; col < moduleCount - 1; col += 1) {
+          var count = 0;
+          if (qrcode.isDark(row, col) ) count += 1;
+          if (qrcode.isDark(row + 1, col) ) count += 1;
+          if (qrcode.isDark(row, col + 1) ) count += 1;
+          if (qrcode.isDark(row + 1, col + 1) ) count += 1;
+          if (count == 0 || count == 4) {
+            lostPoint += 3;
+          }
+        }
+      }
+
+      // LEVEL3
+
+      for (var row = 0; row < moduleCount; row += 1) {
+        for (var col = 0; col < moduleCount - 6; col += 1) {
+          if (qrcode.isDark(row, col)
+              && !qrcode.isDark(row, col + 1)
+              &&  qrcode.isDark(row, col + 2)
+              &&  qrcode.isDark(row, col + 3)
+              &&  qrcode.isDark(row, col + 4)
+              && !qrcode.isDark(row, col + 5)
+              &&  qrcode.isDark(row, col + 6) ) {
+            lostPoint += 40;
+          }
+        }
+      }
+
+      for (var col = 0; col < moduleCount; col += 1) {
+        for (var row = 0; row < moduleCount - 6; row += 1) {
+          if (qrcode.isDark(row, col)
+              && !qrcode.isDark(row + 1, col)
+              &&  qrcode.isDark(row + 2, col)
+              &&  qrcode.isDark(row + 3, col)
+              &&  qrcode.isDark(row + 4, col)
+              && !qrcode.isDark(row + 5, col)
+              &&  qrcode.isDark(row + 6, col) ) {
+            lostPoint += 40;
+          }
+        }
+      }
+
+      // LEVEL4
+
+      var darkCount = 0;
+
+      for (var col = 0; col < moduleCount; col += 1) {
+        for (var row = 0; row < moduleCount; row += 1) {
+          if (qrcode.isDark(row, col) ) {
+            darkCount += 1;
+          }
+        }
+      }
+
+      var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+      lostPoint += ratio * 10;
+
+      return lostPoint;
+    };
+
+    return _this;
+  }();
+
+  //---------------------------------------------------------------------
+  // QRMath
+  //---------------------------------------------------------------------
+
+  var QRMath = function() {
+
+    var EXP_TABLE = new Array(256);
+    var LOG_TABLE = new Array(256);
+
+    // initialize tables
+    for (var i = 0; i < 8; i += 1) {
+      EXP_TABLE[i] = 1 << i;
+    }
+    for (var i = 8; i < 256; i += 1) {
+      EXP_TABLE[i] = EXP_TABLE[i - 4]
+        ^ EXP_TABLE[i - 5]
+        ^ EXP_TABLE[i - 6]
+        ^ EXP_TABLE[i - 8];
+    }
+    for (var i = 0; i < 255; i += 1) {
+      LOG_TABLE[EXP_TABLE[i] ] = i;
+    }
+
+    var _this = {};
+
+    _this.glog = function(n) {
+
+      if (n < 1) {
+        throw 'glog(' + n + ')';
+      }
+
+      return LOG_TABLE[n];
+    };
+
+    _this.gexp = function(n) {
+
+      while (n < 0) {
+        n += 255;
+      }
+
+      while (n >= 256) {
+        n -= 255;
+      }
+
+      return EXP_TABLE[n];
+    };
+
+    return _this;
+  }();
+
+  //---------------------------------------------------------------------
+  // qrPolynomial
+  //---------------------------------------------------------------------
+
+  function qrPolynomial(num, shift) {
+
+    if (typeof num.length == 'undefined') {
+      throw num.length + '/' + shift;
+    }
+
+    var _num = function() {
+      var offset = 0;
+      while (offset < num.length && num[offset] == 0) {
+        offset += 1;
+      }
+      var _num = new Array(num.length - offset + shift);
+      for (var i = 0; i < num.length - offset; i += 1) {
+        _num[i] = num[i + offset];
+      }
+      return _num;
+    }();
+
+    var _this = {};
+
+    _this.getAt = function(index) {
+      return _num[index];
+    };
+
+    _this.getLength = function() {
+      return _num.length;
+    };
+
+    _this.multiply = function(e) {
+
+      var num = new Array(_this.getLength() + e.getLength() - 1);
+
+      for (var i = 0; i < _this.getLength(); i += 1) {
+        for (var j = 0; j < e.getLength(); j += 1) {
+          num[i + j] ^= QRMath.gexp(QRMath.glog(_this.getAt(i) ) + QRMath.glog(e.getAt(j) ) );
+        }
+      }
+
+      return qrPolynomial(num, 0);
+    };
+
+    _this.mod = function(e) {
+
+      if (_this.getLength() - e.getLength() < 0) {
+        return _this;
+      }
+
+      var ratio = QRMath.glog(_this.getAt(0) ) - QRMath.glog(e.getAt(0) );
+
+      var num = new Array(_this.getLength() );
+      for (var i = 0; i < _this.getLength(); i += 1) {
+        num[i] = _this.getAt(i);
+      }
+
+      for (var i = 0; i < e.getLength(); i += 1) {
+        num[i] ^= QRMath.gexp(QRMath.glog(e.getAt(i) ) + ratio);
+      }
+
+      // recursive call
+      return qrPolynomial(num, 0).mod(e);
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // QRRSBlock
+  //---------------------------------------------------------------------
+
+  var QRRSBlock = function() {
+
+    var RS_BLOCK_TABLE = [
+
+      // L
+      // M
+      // Q
+      // H
+
+      // 1
+      [1, 26, 19],
+      [1, 26, 16],
+      [1, 26, 13],
+      [1, 26, 9],
+
+      // 2
+      [1, 44, 34],
+      [1, 44, 28],
+      [1, 44, 22],
+      [1, 44, 16],
+
+      // 3
+      [1, 70, 55],
+      [1, 70, 44],
+      [2, 35, 17],
+      [2, 35, 13],
+
+      // 4
+      [1, 100, 80],
+      [2, 50, 32],
+      [2, 50, 24],
+      [4, 25, 9],
+
+      // 5
+      [1, 134, 108],
+      [2, 67, 43],
+      [2, 33, 15, 2, 34, 16],
+      [2, 33, 11, 2, 34, 12],
+
+      // 6
+      [2, 86, 68],
+      [4, 43, 27],
+      [4, 43, 19],
+      [4, 43, 15],
+
+      // 7
+      [2, 98, 78],
+      [4, 49, 31],
+      [2, 32, 14, 4, 33, 15],
+      [4, 39, 13, 1, 40, 14],
+
+      // 8
+      [2, 121, 97],
+      [2, 60, 38, 2, 61, 39],
+      [4, 40, 18, 2, 41, 19],
+      [4, 40, 14, 2, 41, 15],
+
+      // 9
+      [2, 146, 116],
+      [3, 58, 36, 2, 59, 37],
+      [4, 36, 16, 4, 37, 17],
+      [4, 36, 12, 4, 37, 13],
+
+      // 10
+      [2, 86, 68, 2, 87, 69],
+      [4, 69, 43, 1, 70, 44],
+      [6, 43, 19, 2, 44, 20],
+      [6, 43, 15, 2, 44, 16],
+
+      // 11
+      [4, 101, 81],
+      [1, 80, 50, 4, 81, 51],
+      [4, 50, 22, 4, 51, 23],
+      [3, 36, 12, 8, 37, 13],
+
+      // 12
+      [2, 116, 92, 2, 117, 93],
+      [6, 58, 36, 2, 59, 37],
+      [4, 46, 20, 6, 47, 21],
+      [7, 42, 14, 4, 43, 15],
+
+      // 13
+      [4, 133, 107],
+      [8, 59, 37, 1, 60, 38],
+      [8, 44, 20, 4, 45, 21],
+      [12, 33, 11, 4, 34, 12],
+
+      // 14
+      [3, 145, 115, 1, 146, 116],
+      [4, 64, 40, 5, 65, 41],
+      [11, 36, 16, 5, 37, 17],
+      [11, 36, 12, 5, 37, 13],
+
+      // 15
+      [5, 109, 87, 1, 110, 88],
+      [5, 65, 41, 5, 66, 42],
+      [5, 54, 24, 7, 55, 25],
+      [11, 36, 12, 7, 37, 13],
+
+      // 16
+      [5, 122, 98, 1, 123, 99],
+      [7, 73, 45, 3, 74, 46],
+      [15, 43, 19, 2, 44, 20],
+      [3, 45, 15, 13, 46, 16],
+
+      // 17
+      [1, 135, 107, 5, 136, 108],
+      [10, 74, 46, 1, 75, 47],
+      [1, 50, 22, 15, 51, 23],
+      [2, 42, 14, 17, 43, 15],
+
+      // 18
+      [5, 150, 120, 1, 151, 121],
+      [9, 69, 43, 4, 70, 44],
+      [17, 50, 22, 1, 51, 23],
+      [2, 42, 14, 19, 43, 15],
+
+      // 19
+      [3, 141, 113, 4, 142, 114],
+      [3, 70, 44, 11, 71, 45],
+      [17, 47, 21, 4, 48, 22],
+      [9, 39, 13, 16, 40, 14],
+
+      // 20
+      [3, 135, 107, 5, 136, 108],
+      [3, 67, 41, 13, 68, 42],
+      [15, 54, 24, 5, 55, 25],
+      [15, 43, 15, 10, 44, 16],
+
+      // 21
+      [4, 144, 116, 4, 145, 117],
+      [17, 68, 42],
+      [17, 50, 22, 6, 51, 23],
+      [19, 46, 16, 6, 47, 17],
+
+      // 22
+      [2, 139, 111, 7, 140, 112],
+      [17, 74, 46],
+      [7, 54, 24, 16, 55, 25],
+      [34, 37, 13],
+
+      // 23
+      [4, 151, 121, 5, 152, 122],
+      [4, 75, 47, 14, 76, 48],
+      [11, 54, 24, 14, 55, 25],
+      [16, 45, 15, 14, 46, 16],
+
+      // 24
+      [6, 147, 117, 4, 148, 118],
+      [6, 73, 45, 14, 74, 46],
+      [11, 54, 24, 16, 55, 25],
+      [30, 46, 16, 2, 47, 17],
+
+      // 25
+      [8, 132, 106, 4, 133, 107],
+      [8, 75, 47, 13, 76, 48],
+      [7, 54, 24, 22, 55, 25],
+      [22, 45, 15, 13, 46, 16],
+
+      // 26
+      [10, 142, 114, 2, 143, 115],
+      [19, 74, 46, 4, 75, 47],
+      [28, 50, 22, 6, 51, 23],
+      [33, 46, 16, 4, 47, 17],
+
+      // 27
+      [8, 152, 122, 4, 153, 123],
+      [22, 73, 45, 3, 74, 46],
+      [8, 53, 23, 26, 54, 24],
+      [12, 45, 15, 28, 46, 16],
+
+      // 28
+      [3, 147, 117, 10, 148, 118],
+      [3, 73, 45, 23, 74, 46],
+      [4, 54, 24, 31, 55, 25],
+      [11, 45, 15, 31, 46, 16],
+
+      // 29
+      [7, 146, 116, 7, 147, 117],
+      [21, 73, 45, 7, 74, 46],
+      [1, 53, 23, 37, 54, 24],
+      [19, 45, 15, 26, 46, 16],
+
+      // 30
+      [5, 145, 115, 10, 146, 116],
+      [19, 75, 47, 10, 76, 48],
+      [15, 54, 24, 25, 55, 25],
+      [23, 45, 15, 25, 46, 16],
+
+      // 31
+      [13, 145, 115, 3, 146, 116],
+      [2, 74, 46, 29, 75, 47],
+      [42, 54, 24, 1, 55, 25],
+      [23, 45, 15, 28, 46, 16],
+
+      // 32
+      [17, 145, 115],
+      [10, 74, 46, 23, 75, 47],
+      [10, 54, 24, 35, 55, 25],
+      [19, 45, 15, 35, 46, 16],
+
+      // 33
+      [17, 145, 115, 1, 146, 116],
+      [14, 74, 46, 21, 75, 47],
+      [29, 54, 24, 19, 55, 25],
+      [11, 45, 15, 46, 46, 16],
+
+      // 34
+      [13, 145, 115, 6, 146, 116],
+      [14, 74, 46, 23, 75, 47],
+      [44, 54, 24, 7, 55, 25],
+      [59, 46, 16, 1, 47, 17],
+
+      // 35
+      [12, 151, 121, 7, 152, 122],
+      [12, 75, 47, 26, 76, 48],
+      [39, 54, 24, 14, 55, 25],
+      [22, 45, 15, 41, 46, 16],
+
+      // 36
+      [6, 151, 121, 14, 152, 122],
+      [6, 75, 47, 34, 76, 48],
+      [46, 54, 24, 10, 55, 25],
+      [2, 45, 15, 64, 46, 16],
+
+      // 37
+      [17, 152, 122, 4, 153, 123],
+      [29, 74, 46, 14, 75, 47],
+      [49, 54, 24, 10, 55, 25],
+      [24, 45, 15, 46, 46, 16],
+
+      // 38
+      [4, 152, 122, 18, 153, 123],
+      [13, 74, 46, 32, 75, 47],
+      [48, 54, 24, 14, 55, 25],
+      [42, 45, 15, 32, 46, 16],
+
+      // 39
+      [20, 147, 117, 4, 148, 118],
+      [40, 75, 47, 7, 76, 48],
+      [43, 54, 24, 22, 55, 25],
+      [10, 45, 15, 67, 46, 16],
+
+      // 40
+      [19, 148, 118, 6, 149, 119],
+      [18, 75, 47, 31, 76, 48],
+      [34, 54, 24, 34, 55, 25],
+      [20, 45, 15, 61, 46, 16]
+    ];
+
+    var qrRSBlock = function(totalCount, dataCount) {
+      var _this = {};
+      _this.totalCount = totalCount;
+      _this.dataCount = dataCount;
+      return _this;
+    };
+
+    var _this = {};
+
+    var getRsBlockTable = function(typeNumber, errorCorrectionLevel) {
+
+      switch(errorCorrectionLevel) {
+      case QRErrorCorrectionLevel.L :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+      case QRErrorCorrectionLevel.M :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+      case QRErrorCorrectionLevel.Q :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+      case QRErrorCorrectionLevel.H :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+      default :
+        return undefined;
+      }
+    };
+
+    _this.getRSBlocks = function(typeNumber, errorCorrectionLevel) {
+
+      var rsBlock = getRsBlockTable(typeNumber, errorCorrectionLevel);
+
+      if (typeof rsBlock == 'undefined') {
+        throw 'bad rs block @ typeNumber:' + typeNumber +
+            '/errorCorrectionLevel:' + errorCorrectionLevel;
+      }
+
+      var length = rsBlock.length / 3;
+
+      var list = [];
+
+      for (var i = 0; i < length; i += 1) {
+
+        var count = rsBlock[i * 3 + 0];
+        var totalCount = rsBlock[i * 3 + 1];
+        var dataCount = rsBlock[i * 3 + 2];
+
+        for (var j = 0; j < count; j += 1) {
+          list.push(qrRSBlock(totalCount, dataCount) );
+        }
+      }
+
+      return list;
+    };
+
+    return _this;
+  }();
+
+  //---------------------------------------------------------------------
+  // qrBitBuffer
+  //---------------------------------------------------------------------
+
+  var qrBitBuffer = function() {
+
+    var _buffer = [];
+    var _length = 0;
+
+    var _this = {};
+
+    _this.getBuffer = function() {
+      return _buffer;
+    };
+
+    _this.getAt = function(index) {
+      var bufIndex = Math.floor(index / 8);
+      return ( (_buffer[bufIndex] >>> (7 - index % 8) ) & 1) == 1;
+    };
+
+    _this.put = function(num, length) {
+      for (var i = 0; i < length; i += 1) {
+        _this.putBit( ( (num >>> (length - i - 1) ) & 1) == 1);
+      }
+    };
+
+    _this.getLengthInBits = function() {
+      return _length;
+    };
+
+    _this.putBit = function(bit) {
+
+      var bufIndex = Math.floor(_length / 8);
+      if (_buffer.length <= bufIndex) {
+        _buffer.push(0);
+      }
+
+      if (bit) {
+        _buffer[bufIndex] |= (0x80 >>> (_length % 8) );
+      }
+
+      _length += 1;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrNumber
+  //---------------------------------------------------------------------
+
+  var qrNumber = function(data) {
+
+    var _mode = QRMode.MODE_NUMBER;
+    var _data = data;
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return _data.length;
+    };
+
+    _this.write = function(buffer) {
+
+      var data = _data;
+
+      var i = 0;
+
+      while (i + 2 < data.length) {
+        buffer.put(strToNum(data.substring(i, i + 3) ), 10);
+        i += 3;
+      }
+
+      if (i < data.length) {
+        if (data.length - i == 1) {
+          buffer.put(strToNum(data.substring(i, i + 1) ), 4);
+        } else if (data.length - i == 2) {
+          buffer.put(strToNum(data.substring(i, i + 2) ), 7);
+        }
+      }
+    };
+
+    var strToNum = function(s) {
+      var num = 0;
+      for (var i = 0; i < s.length; i += 1) {
+        num = num * 10 + chatToNum(s.charAt(i) );
+      }
+      return num;
+    };
+
+    var chatToNum = function(c) {
+      if ('0' <= c && c <= '9') {
+        return c.charCodeAt(0) - '0'.charCodeAt(0);
+      }
+      throw 'illegal char :' + c;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrAlphaNum
+  //---------------------------------------------------------------------
+
+  var qrAlphaNum = function(data) {
+
+    var _mode = QRMode.MODE_ALPHA_NUM;
+    var _data = data;
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return _data.length;
+    };
+
+    _this.write = function(buffer) {
+
+      var s = _data;
+
+      var i = 0;
+
+      while (i + 1 < s.length) {
+        buffer.put(
+          getCode(s.charAt(i) ) * 45 +
+          getCode(s.charAt(i + 1) ), 11);
+        i += 2;
+      }
+
+      if (i < s.length) {
+        buffer.put(getCode(s.charAt(i) ), 6);
+      }
+    };
+
+    var getCode = function(c) {
+
+      if ('0' <= c && c <= '9') {
+        return c.charCodeAt(0) - '0'.charCodeAt(0);
+      } else if ('A' <= c && c <= 'Z') {
+        return c.charCodeAt(0) - 'A'.charCodeAt(0) + 10;
+      } else {
+        switch (c) {
+        case ' ' : return 36;
+        case '$' : return 37;
+        case '%' : return 38;
+        case '*' : return 39;
+        case '+' : return 40;
+        case '-' : return 41;
+        case '.' : return 42;
+        case '/' : return 43;
+        case ':' : return 44;
+        default :
+          throw 'illegal char :' + c;
+        }
+      }
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qr8BitByte
+  //---------------------------------------------------------------------
+
+  var qr8BitByte = function(data) {
+
+    var _mode = QRMode.MODE_8BIT_BYTE;
+    var _data = data;
+    var _bytes = qrcode.stringToBytes(data);
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return _bytes.length;
+    };
+
+    _this.write = function(buffer) {
+      for (var i = 0; i < _bytes.length; i += 1) {
+        buffer.put(_bytes[i], 8);
+      }
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrKanji
+  //---------------------------------------------------------------------
+
+  var qrKanji = function(data) {
+
+    var _mode = QRMode.MODE_KANJI;
+    var _data = data;
+
+    var stringToBytes = qrcode.stringToBytesFuncs['SJIS'];
+    if (!stringToBytes) {
+      throw 'sjis not supported.';
+    }
+    !function(c, code) {
+      // self test for sjis support.
+      var test = stringToBytes(c);
+      if (test.length != 2 || ( (test[0] << 8) | test[1]) != code) {
+        throw 'sjis not supported.';
+      }
+    }('\u53cb', 0x9746);
+
+    var _bytes = stringToBytes(data);
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return ~~(_bytes.length / 2);
+    };
+
+    _this.write = function(buffer) {
+
+      var data = _bytes;
+
+      var i = 0;
+
+      while (i + 1 < data.length) {
+
+        var c = ( (0xff & data[i]) << 8) | (0xff & data[i + 1]);
+
+        if (0x8140 <= c && c <= 0x9FFC) {
+          c -= 0x8140;
+        } else if (0xE040 <= c && c <= 0xEBBF) {
+          c -= 0xC140;
+        } else {
+          throw 'illegal char at ' + (i + 1) + '/' + c;
+        }
+
+        c = ( (c >>> 8) & 0xff) * 0xC0 + (c & 0xff);
+
+        buffer.put(c, 13);
+
+        i += 2;
+      }
+
+      if (i < data.length) {
+        throw 'illegal char at ' + (i + 1);
+      }
+    };
+
+    return _this;
+  };
+
+  //=====================================================================
+  // GIF Support etc.
+  //
+
+  //---------------------------------------------------------------------
+  // byteArrayOutputStream
+  //---------------------------------------------------------------------
+
+  var byteArrayOutputStream = function() {
+
+    var _bytes = [];
+
+    var _this = {};
+
+    _this.writeByte = function(b) {
+      _bytes.push(b & 0xff);
+    };
+
+    _this.writeShort = function(i) {
+      _this.writeByte(i);
+      _this.writeByte(i >>> 8);
+    };
+
+    _this.writeBytes = function(b, off, len) {
+      off = off || 0;
+      len = len || b.length;
+      for (var i = 0; i < len; i += 1) {
+        _this.writeByte(b[i + off]);
+      }
+    };
+
+    _this.writeString = function(s) {
+      for (var i = 0; i < s.length; i += 1) {
+        _this.writeByte(s.charCodeAt(i) );
+      }
+    };
+
+    _this.toByteArray = function() {
+      return _bytes;
+    };
+
+    _this.toString = function() {
+      var s = '';
+      s += '[';
+      for (var i = 0; i < _bytes.length; i += 1) {
+        if (i > 0) {
+          s += ',';
+        }
+        s += _bytes[i];
+      }
+      s += ']';
+      return s;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // base64EncodeOutputStream
+  //---------------------------------------------------------------------
+
+  var base64EncodeOutputStream = function() {
+
+    var _buffer = 0;
+    var _buflen = 0;
+    var _length = 0;
+    var _base64 = '';
+
+    var _this = {};
+
+    var writeEncoded = function(b) {
+      _base64 += String.fromCharCode(encode(b & 0x3f) );
+    };
+
+    var encode = function(n) {
+      if (n < 0) {
+        // error.
+      } else if (n < 26) {
+        return 0x41 + n;
+      } else if (n < 52) {
+        return 0x61 + (n - 26);
+      } else if (n < 62) {
+        return 0x30 + (n - 52);
+      } else if (n == 62) {
+        return 0x2b;
+      } else if (n == 63) {
+        return 0x2f;
+      }
+      throw 'n:' + n;
+    };
+
+    _this.writeByte = function(n) {
+
+      _buffer = (_buffer << 8) | (n & 0xff);
+      _buflen += 8;
+      _length += 1;
+
+      while (_buflen >= 6) {
+        writeEncoded(_buffer >>> (_buflen - 6) );
+        _buflen -= 6;
+      }
+    };
+
+    _this.flush = function() {
+
+      if (_buflen > 0) {
+        writeEncoded(_buffer << (6 - _buflen) );
+        _buffer = 0;
+        _buflen = 0;
+      }
+
+      if (_length % 3 != 0) {
+        // padding
+        var padlen = 3 - _length % 3;
+        for (var i = 0; i < padlen; i += 1) {
+          _base64 += '=';
+        }
+      }
+    };
+
+    _this.toString = function() {
+      return _base64;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // base64DecodeInputStream
+  //---------------------------------------------------------------------
+
+  var base64DecodeInputStream = function(str) {
+
+    var _str = str;
+    var _pos = 0;
+    var _buffer = 0;
+    var _buflen = 0;
+
+    var _this = {};
+
+    _this.read = function() {
+
+      while (_buflen < 8) {
+
+        if (_pos >= _str.length) {
+          if (_buflen == 0) {
+            return -1;
+          }
+          throw 'unexpected end of file./' + _buflen;
+        }
+
+        var c = _str.charAt(_pos);
+        _pos += 1;
+
+        if (c == '=') {
+          _buflen = 0;
+          return -1;
+        } else if (c.match(/^\s$/) ) {
+          // ignore if whitespace.
+          continue;
+        }
+
+        _buffer = (_buffer << 6) | decode(c.charCodeAt(0) );
+        _buflen += 6;
+      }
+
+      var n = (_buffer >>> (_buflen - 8) ) & 0xff;
+      _buflen -= 8;
+      return n;
+    };
+
+    var decode = function(c) {
+      if (0x41 <= c && c <= 0x5a) {
+        return c - 0x41;
+      } else if (0x61 <= c && c <= 0x7a) {
+        return c - 0x61 + 26;
+      } else if (0x30 <= c && c <= 0x39) {
+        return c - 0x30 + 52;
+      } else if (c == 0x2b) {
+        return 62;
+      } else if (c == 0x2f) {
+        return 63;
+      } else {
+        throw 'c:' + c;
+      }
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // gifImage (B/W)
+  //---------------------------------------------------------------------
+
+  var gifImage = function(width, height) {
+
+    var _width = width;
+    var _height = height;
+    var _data = new Array(width * height);
+
+    var _this = {};
+
+    _this.setPixel = function(x, y, pixel) {
+      _data[y * _width + x] = pixel;
+    };
+
+    _this.write = function(out) {
+
+      //---------------------------------
+      // GIF Signature
+
+      out.writeString('GIF87a');
+
+      //---------------------------------
+      // Screen Descriptor
+
+      out.writeShort(_width);
+      out.writeShort(_height);
+
+      out.writeByte(0x80); // 2bit
+      out.writeByte(0);
+      out.writeByte(0);
+
+      //---------------------------------
+      // Global Color Map
+
+      // black
+      out.writeByte(0x00);
+      out.writeByte(0x00);
+      out.writeByte(0x00);
+
+      // white
+      out.writeByte(0xff);
+      out.writeByte(0xff);
+      out.writeByte(0xff);
+
+      //---------------------------------
+      // Image Descriptor
+
+      out.writeString(',');
+      out.writeShort(0);
+      out.writeShort(0);
+      out.writeShort(_width);
+      out.writeShort(_height);
+      out.writeByte(0);
+
+      //---------------------------------
+      // Local Color Map
+
+      //---------------------------------
+      // Raster Data
+
+      var lzwMinCodeSize = 2;
+      var raster = getLZWRaster(lzwMinCodeSize);
+
+      out.writeByte(lzwMinCodeSize);
+
+      var offset = 0;
+
+      while (raster.length - offset > 255) {
+        out.writeByte(255);
+        out.writeBytes(raster, offset, 255);
+        offset += 255;
+      }
+
+      out.writeByte(raster.length - offset);
+      out.writeBytes(raster, offset, raster.length - offset);
+      out.writeByte(0x00);
+
+      //---------------------------------
+      // GIF Terminator
+      out.writeString(';');
+    };
+
+    var bitOutputStream = function(out) {
+
+      var _out = out;
+      var _bitLength = 0;
+      var _bitBuffer = 0;
+
+      var _this = {};
+
+      _this.write = function(data, length) {
+
+        if ( (data >>> length) != 0) {
+          throw 'length over';
+        }
+
+        while (_bitLength + length >= 8) {
+          _out.writeByte(0xff & ( (data << _bitLength) | _bitBuffer) );
+          length -= (8 - _bitLength);
+          data >>>= (8 - _bitLength);
+          _bitBuffer = 0;
+          _bitLength = 0;
+        }
+
+        _bitBuffer = (data << _bitLength) | _bitBuffer;
+        _bitLength = _bitLength + length;
+      };
+
+      _this.flush = function() {
+        if (_bitLength > 0) {
+          _out.writeByte(_bitBuffer);
+        }
+      };
+
+      return _this;
+    };
+
+    var getLZWRaster = function(lzwMinCodeSize) {
+
+      var clearCode = 1 << lzwMinCodeSize;
+      var endCode = (1 << lzwMinCodeSize) + 1;
+      var bitLength = lzwMinCodeSize + 1;
+
+      // Setup LZWTable
+      var table = lzwTable();
+
+      for (var i = 0; i < clearCode; i += 1) {
+        table.add(String.fromCharCode(i) );
+      }
+      table.add(String.fromCharCode(clearCode) );
+      table.add(String.fromCharCode(endCode) );
+
+      var byteOut = byteArrayOutputStream();
+      var bitOut = bitOutputStream(byteOut);
+
+      // clear code
+      bitOut.write(clearCode, bitLength);
+
+      var dataIndex = 0;
+
+      var s = String.fromCharCode(_data[dataIndex]);
+      dataIndex += 1;
+
+      while (dataIndex < _data.length) {
+
+        var c = String.fromCharCode(_data[dataIndex]);
+        dataIndex += 1;
+
+        if (table.contains(s + c) ) {
+
+          s = s + c;
+
+        } else {
+
+          bitOut.write(table.indexOf(s), bitLength);
+
+          if (table.size() < 0xfff) {
+
+            if (table.size() == (1 << bitLength) ) {
+              bitLength += 1;
+            }
+
+            table.add(s + c);
+          }
+
+          s = c;
+        }
+      }
+
+      bitOut.write(table.indexOf(s), bitLength);
+
+      // end code
+      bitOut.write(endCode, bitLength);
+
+      bitOut.flush();
+
+      return byteOut.toByteArray();
+    };
+
+    var lzwTable = function() {
+
+      var _map = {};
+      var _size = 0;
+
+      var _this = {};
+
+      _this.add = function(key) {
+        if (_this.contains(key) ) {
+          throw 'dup key:' + key;
+        }
+        _map[key] = _size;
+        _size += 1;
+      };
+
+      _this.size = function() {
+        return _size;
+      };
+
+      _this.indexOf = function(key) {
+        return _map[key];
+      };
+
+      _this.contains = function(key) {
+        return typeof _map[key] != 'undefined';
+      };
+
+      return _this;
+    };
+
+    return _this;
+  };
+
+  var createDataURL = function(width, height, getPixel) {
+    var gif = gifImage(width, height);
+    for (var y = 0; y < height; y += 1) {
+      for (var x = 0; x < width; x += 1) {
+        gif.setPixel(x, y, getPixel(x, y) );
+      }
+    }
+
+    var b = byteArrayOutputStream();
+    gif.write(b);
+
+    var base64 = base64EncodeOutputStream();
+    var bytes = b.toByteArray();
+    for (var i = 0; i < bytes.length; i += 1) {
+      base64.writeByte(bytes[i]);
+    }
+    base64.flush();
+
+    return 'data:image/gif;base64,' + base64;
+  };
+
+  //---------------------------------------------------------------------
+  // returns qrcode function.
+
+  return qrcode;
+}();
+
+// multibyte support
+!function() {
+
+  qrcode.stringToBytesFuncs['UTF-8'] = function(s) {
+    // http://stackoverflow.com/questions/18729405/how-to-convert-utf8-string-to-byte-array
+    function toUTF8Array(str) {
+      var utf8 = [];
+      for (var i=0; i < str.length; i++) {
+        var charcode = str.charCodeAt(i);
+        if (charcode < 0x80) utf8.push(charcode);
+        else if (charcode < 0x800) {
+          utf8.push(0xc0 | (charcode >> 6),
+              0x80 | (charcode & 0x3f));
+        }
+        else if (charcode < 0xd800 || charcode >= 0xe000) {
+          utf8.push(0xe0 | (charcode >> 12),
+              0x80 | ((charcode>>6) & 0x3f),
+              0x80 | (charcode & 0x3f));
+        }
+        // surrogate pair
+        else {
+          i++;
+          // UTF-16 encodes 0x10000-0x10FFFF by
+          // subtracting 0x10000 and splitting the
+          // 20 bits of 0x0-0xFFFFF into two halves
+          charcode = 0x10000 + (((charcode & 0x3ff)<<10)
+            | (str.charCodeAt(i) & 0x3ff));
+          utf8.push(0xf0 | (charcode >>18),
+              0x80 | ((charcode>>12) & 0x3f),
+              0x80 | ((charcode>>6) & 0x3f),
+              0x80 | (charcode & 0x3f));
+        }
+      }
+      return utf8;
+    }
+    return toUTF8Array(s);
+  };
+
+}();
+
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+      define([], factory);
+  } else if (typeof exports === 'object') {
+      module.exports = factory();
+  }
+}(function () {
+    return qrcode;
+}));
+
+  </script>
+  <script>
+(() => {
+  'use strict';
+  // Keep a clean source snapshot; saved HTML contains data, never temporary blob URLs.
+  const sourceDocument = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  const $ = (id) => document.getElementById(id);
+  const state = JSON.parse($('site-data').textContent);
+  // Upgrade earlier three-WeChat files while keeping the existing account details.
+  const previousSocials = Array.isArray(state.socials) ? state.socials : [];
+  const previousWechat = previousSocials.find((item) => item.type === 'wechat')
+    || previousSocials.find((item) => !item.type && item.name === 'OM创意工坊')
+    || previousSocials.find((item) => !item.type && !/github/i.test(item.name || ''));
+  const previousGithub = previousSocials.find((item) => item.type === 'github');
+  state.socials = [
+    { type: 'wechat', name: previousWechat?.name || 'OM创意工坊', url: previousWechat?.url || '', qrImage: previousWechat?.qrImage || '' },
+    { type: 'github', name: previousGithub?.name || 'GitHub', url: previousGithub?.url || '' },
+  ];
+  state.profile.heroName ||= state.profile.name;
+  state.articles = Array.isArray(state.articles) ? state.articles : [];
+  state.version = 4;
+  const bundledAssets = JSON.parse($('asset-bundle').textContent);
+  const hosted = document.body.dataset.server === 'true' && /^https?:$/.test(location.protocol);
+  const publicMirror = document.body.dataset.githubPages === 'true' && /^https?:$/.test(location.protocol);
+  const contentOrigin = publicMirror ? new URL(document.body.dataset.contentOrigin).origin : '';
+  const serverState = hosted ? JSON.parse($('server-state').textContent) : {};
+  let contentRevision = serverState.revision || 0;
+  let adminAuthenticated = Boolean(serverState.authenticated);
+  const activeMedia = new Set();
+  const defaultMedia = new Map();
+  let dirty = false;
+  let revision = 0;
+  let savedRevision = 0;
+  let fileHandle = null;
+  let projectImage = '';
+  let profileImage = '';
+  let wechatQrImage = '';
+  let projectImageSequence = 0;
+  let profileImageSequence = 0;
+  let wechatQrSequence = 0;
+  let pendingImages = 0;
+  let deletingId = '';
+  let deletingKind = 'projects';
+  let toastTimer;
+  const MAX_IMAGE = 12 * 1024 * 1024;
+
+  function toast(message) {
+    clearTimeout(toastTimer);
+    $('toast').textContent = message;
+    $('toast').hidden = false;
+    toastTimer = setTimeout(() => { $('toast').hidden = true; }, 5500);
+  }
+
+  function error(id, message = '') {
+    $(id).textContent = message;
+    $(id).hidden = !message;
+  }
+
+  function mediaUrl(data, temporary = true) {
+    if (/^\/media\/[a-f0-9]{64}\.(png|jpg|webp|gif)$/.test(data)) return contentOrigin + data;
+    if (!/^data:image\/(png|jpeg|webp|gif);base64,/.test(data)) throw new Error('图片格式无效。');
+    const comma = data.indexOf(',');
+    const mime = data.slice(5, data.indexOf(';'));
+    const binary = atob(data.slice(comma + 1));
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    const url = URL.createObjectURL(new Blob([bytes], { type: mime }));
+    if (temporary) activeMedia.add(url);
+    return url;
+  }
+
+  function defaultAsset(name) {
+    if (!defaultMedia.has(name)) defaultMedia.set(name, mediaUrl(bundledAssets[name], false));
+    return defaultMedia.get(name);
+  }
+
+  function attachFallback(img, assetName) {
+    if (!bundledAssets[assetName]) return;
+    const restore = () => {
+      if (img.dataset.custom === 'true' || img.getAttribute('src')?.startsWith('blob:')) return;
+      img.src = defaultAsset(assetName);
+    };
+    img.addEventListener('error', restore);
+    if (img.complete && img.naturalWidth === 0) restore();
+  }
+
+  function safeLink(raw) {
+    if (!raw.trim()) return '';
+    const url = new URL(raw.trim());
+    if (!['https:', 'http:'].includes(url.protocol) || url.username || url.password) {
+      throw new Error('请填写以 https:// 或 http:// 开头的网页链接。');
+    }
+    return url.href;
+  }
+
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function actionButton(label, action, id) {
+    const button = el('button', 'edit-button', label);
+    button.type = 'button';
+    button.dataset.action = action;
+    if (id) button.dataset.id = id;
+    return button;
+  }
+
+  function markChanged(message) {
+    dirty = true;
+    revision += 1;
+    $('save-status').textContent = hosted ? '有未发布的修改 · 请保存到网站' : '有未保存的修改 · 请保存网页文件';
+    render();
+    toast(message + (hosted ? '，点击“保存到网站”即可发布。' : '，记得点击“保存网页”。'));
+  }
+
+  function renderSocials() {
+    ['social-links', 'hero-social-links'].forEach((groupId) => {
+    const group = $(groupId);
+    if (!group) return;
+    const hero = groupId === 'hero-social-links';
+    const editing = document.body.dataset.editing === 'true';
+    group.replaceChildren();
+    state.socials.forEach((item) => {
+      const github = item.type === 'github';
+      const platform = github ? 'GitHub' : '微信公众号';
+      const configured = Boolean(item.url || (!github && item.qrImage));
+      const icon = el(github && configured ? 'a' : 'button', 'social-icon' + (configured ? '' : ' unconfigured'));
+      const name = item.name || (github ? 'GitHub' : 'OM创意工坊');
+      icon.dataset.platform = item.type;
+      const inactive = hero && !configured && !editing;
+      icon.setAttribute('aria-label', (configured ? '打开' : inactive ? '尚未配置' : '配置') + platform + '：' + name);
+      icon.title = configured ? name : name + (inactive ? ' · 请在编辑模式填写链接' : ' · 点击填写跳转链接');
+      if (configured && github) {
+        icon.href = safeLink(item.url);
+        icon.target = '_blank';
+        icon.rel = 'noopener noreferrer';
+      } else {
+        icon.type = 'button';
+        if (!hero) icon.dataset.editOnly = '';
+        icon.disabled = inactive;
+        icon.dataset.action = 'edit-social';
+      }
+      if (!github && configured) {
+        delete icon.dataset.editOnly;
+        icon.dataset.action = 'show-wechat';
+        icon.setAttribute('aria-haspopup', 'dialog');
+        icon.setAttribute('aria-controls', 'wechat-dialog');
+        icon.setAttribute('aria-label', '查看' + name + '的关注二维码');
+        icon.title = name + ' · 扫码关注';
+      }
+      // Fixed, trusted icon geometry. User content is always inserted as text.
+      icon.innerHTML = github
+        ? '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.8-2.2c2.7-.3 5.5-1.3 5.5-6A4.7 4.7 0 0 0 18.4 6c.1-.3.6-1.6-.1-3.3 0 0-1-.3-3.4 1.3a11.8 11.8 0 0 0-6.2 0C6.3 2.4 5.3 2.7 5.3 2.7c-.7 1.7-.2 3-.1 3.3a4.7 4.7 0 0 0-1.3 3.3c0 4.7 2.8 5.7 5.5 6a3.4 3.4 0 0 0-.8 2.2V22"/></svg>'
+        : '<svg aria-hidden="true" viewBox="0 0 28 28"><path d="M17.2 13.1c0-4-3.5-7.1-7.9-7.1S1.4 9.1 1.4 13c0 2.1 1.1 4 2.9 5.3l-.6 2.5 3-1.5c.8.2 1.7.4 2.6.4h.5"/><path d="M26.6 18c0-3.5-3.1-6.3-7-6.3s-7 2.8-7 6.3 3.1 6.3 7 6.3c.8 0 1.6-.1 2.3-.3l2.6 1.3-.5-2.2c1.6-1.2 2.6-3 2.6-5.1Z"/><path d="M6.6 11.5h.1m5.2 0h.1m5.4 5h.1m4.2 0h.1" stroke-width="2.5"/></svg>';
+      if (hero) icon.append(el('span', 'social-label', name));
+      group.append(icon);
+    });
+    });
+  }
+
+  function renderArticles() {
+    const list = $('article-list');
+    const scrollLeft = list.scrollLeft;
+    list.replaceChildren();
+    $('article-account').textContent = state.socials[0].name;
+    $('articles-empty').hidden = state.articles.length > 0;
+    list.hidden = state.articles.length === 0;
+    state.articles.forEach((article) => {
+      const card = el('article', 'article-card');
+      card.setAttribute('role', 'listitem');
+      const date = el('p', 'article-date', article.date || 'OM创意工坊');
+      card.append(date, el('h3', 'article-title', article.title), el('p', 'article-summary', article.summary));
+      const link = el('a', 'text-link article-read', '阅读全文 ↗');
+      link.href = safeLink(article.url);
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.setAttribute('aria-label', '阅读全文：' + article.title);
+      card.append(link);
+      const controls = el('div', 'project-controls');
+      controls.dataset.editOnly = '';
+      controls.append(actionButton('编辑', 'edit-article', article.id), actionButton('删除', 'delete-article', article.id));
+      card.append(controls);
+      list.append(card);
+    });
+    list.scrollLeft = scrollLeft;
+    requestAnimationFrame(updateArticleNavigation);
+  }
+
+  function updateArticleNavigation() {
+    const list = $('article-list');
+    const overflow = list.scrollWidth - list.clientWidth;
+    $('article-navigation').hidden = overflow < 2 || state.articles.length === 0;
+    $('articles-prev').disabled = list.scrollLeft < 2;
+    $('articles-next').disabled = list.scrollLeft >= overflow - 2;
+  }
+
+  function openArticle(id = '') {
+    const article = state.articles.find((item) => item.id === id);
+    $('article-form').reset();
+    ['id', 'title', 'summary', 'url', 'date'].forEach((key) => { $('article-' + key).value = article?.[key] || ''; });
+    $('article-dialog-title').textContent = article ? '编辑文章' : '添加文章';
+    error('article-error');
+    $('article-dialog').showModal();
+    $('article-title').focus();
+  }
+
+  function openWechat() {
+    const item = state.socials.find((social) => social.type === 'wechat');
+    try {
+      $('wechat-dialog-title').textContent = item.name;
+      $('wechat-qr').alt = item.name + '的关注二维码';
+      if (item.qrImage) $('wechat-qr').src = mediaUrl(item.qrImage);
+      else {
+        const code = qrcode(0, 'M');
+        code.addData(safeLink(item.url));
+        code.make();
+        $('wechat-qr').src = code.createDataURL(6, 24);
+      }
+      $('wechat-qr-caption').textContent = item.qrImage ? '用微信扫一扫，关注公众号。' : '用微信扫一扫，进入公众号主页并关注。';
+      $('wechat-dialog').showModal();
+    } catch { toast('二维码暂时无法显示，请在社交设置中检查链接或上传公众号二维码。'); }
+  }
+
+  function renderProjects() {
+    const list = $('portfolio-list');
+    list.replaceChildren();
+    $('portfolio-empty').hidden = state.projects.length > 0;
+    state.projects.forEach((project) => {
+      const card = el('article', 'portfolio-item');
+      const media = el('div', 'project-media');
+      if (project.image) {
+        const image = el('img');
+        image.alt = project.title + '的作品封面';
+        image.src = mediaUrl(project.image);
+        image.decoding = 'async';
+        media.append(image);
+      } else {
+        media.append(el('span', 'no-cover', '尚未设置封面'));
+      }
+      const content = el('div', 'project-content');
+      if (project.category) content.append(el('p', 'project-category', project.category));
+      content.append(el('h3', 'project-title', project.title));
+      if (project.description) content.append(el('p', 'project-description', project.description));
+      if (project.url) {
+        const link = el('a', 'text-link', '查看作品 ↗');
+        link.href = safeLink(project.url);
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        content.append(link);
+      }
+      const controls = el('div', 'project-controls');
+      controls.dataset.editOnly = '';
+      controls.append(actionButton('编辑', 'edit-project', project.id), actionButton('删除', 'delete-project', project.id));
+      content.append(controls);
+      card.append(media, content);
+      list.append(card);
+    });
+  }
+
+  function renderProfile() {
+    const profile = state.profile;
+    document.querySelector('.brand').textContent = profile.heroName;
+    document.querySelector('.brand').setAttribute('aria-label', profile.heroName + '，返回首页');
+    $('hero-title').textContent = profile.heroName + '.';
+    document.querySelector('.hero-subtitle').textContent = profile.tagline;
+    $('about-title').textContent = profile.heading;
+    $('about-bio').textContent = profile.bio;
+    $('about-note').textContent = profile.note;
+    $('about-note').hidden = !profile.note;
+    $('footer-name').textContent = profile.name;
+    document.title = profile.heroName + ' — 个人空间';
+    const photo = $('about-photo');
+    photo.dataset.custom = String(Boolean(profile.image));
+    photo.hidden = !profile.image;
+    $('portrait-placeholder').hidden = Boolean(profile.image);
+    if (profile.image) photo.src = mediaUrl(profile.image);
+    else photo.removeAttribute('src');
+    photo.alt = profile.name + '的头像';
+    const contact = $('contact-value');
+    contact.replaceChildren();
+    if (profile.email) {
+      const link = el('a', '', profile.email);
+      link.href = 'mailto:' + profile.email;
+      contact.append(link);
+    } else contact.textContent = '联系方式待补充。';
+  }
+
+  function render() {
+    for (const url of activeMedia) URL.revokeObjectURL(url);
+    activeMedia.clear();
+    renderProfile();
+    renderProjects();
+    renderSocials();
+    renderArticles();
+  }
+
+  function previewImage(id, data) {
+    const container = $(id);
+    const img = container.querySelector('img');
+    const previous = img.getAttribute('src');
+    if (previous?.startsWith('blob:')) { URL.revokeObjectURL(previous); activeMedia.delete(previous); }
+    container.hidden = !data;
+    if (data) img.src = mediaUrl(data);
+    else img.removeAttribute('src');
+  }
+
+  async function readImage(file) {
+    if (!file) return '';
+    if (!['image/png', 'image/jpeg', 'image/webp', 'image/gif'].includes(file.type)) {
+      throw new Error('请选择 PNG、JPG、WebP 或 GIF 图片。');
+    }
+    if (file.size > MAX_IMAGE) throw new Error('图片超过 12 MB，请选择较小的图片。');
+    const data = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('图片读取失败，请重新选择。'));
+      reader.readAsDataURL(file);
+    });
+    const url = mediaUrl(data);
+    try {
+      const image = new Image();
+      image.src = url;
+      await image.decode();
+    } catch { throw new Error('这张图片无法显示，请换一张图片。'); }
+    finally { URL.revokeObjectURL(url); activeMedia.delete(url); }
+    return data;
+  }
+
+  function openProject(id = '') {
+    const project = state.projects.find((item) => item.id === id);
+    $('project-form').reset();
+    $('project-id').value = project?.id || '';
+    $('project-title').value = project?.title || '';
+    $('project-category').value = project?.category || '';
+    $('project-description').value = project?.description || '';
+    $('project-url').value = project?.url || '';
+    projectImage = project?.image || '';
+    projectImageSequence += 1;
+    $('project-dialog-title').textContent = project ? '编辑作品' : '添加作品';
+    previewImage('project-image-preview', projectImage);
+    error('project-error');
+    $('project-dialog').showModal();
+    $('project-title').focus();
+  }
+
+  function openAbout() {
+    $('about-form').reset();
+    const profile = state.profile;
+    ['name', 'heroName', 'tagline', 'heading', 'bio', 'note', 'email'].forEach((key) => { $('profile-' + key).value = profile[key]; });
+    profileImage = profile.image;
+    profileImageSequence += 1;
+    previewImage('profile-image-preview', profileImage);
+    error('about-error');
+    $('about-dialog').showModal();
+  }
+
+  function openSocial(platform) {
+    wechatQrImage = state.socials[0].qrImage || '';
+    wechatQrSequence += 1;
+    $('wechat-qr-image').value = '';
+    previewImage('wechat-qr-image-preview', wechatQrImage);
+    const fields = $('social-fields');
+    fields.replaceChildren();
+    state.socials.forEach((item, index) => {
+      const github = item.type === 'github';
+      const fieldset = el('fieldset', 'social-fieldset');
+      fieldset.append(el('legend', '', github ? 'GitHub' : '微信公众号'));
+      const inputs = github
+        ? [['name', '显示名称', 'GitHub'], ['url', 'GitHub 主页、仓库或网站链接', 'https://github.com/你的用户名']]
+        : [['name', '公众号名称', 'OM创意工坊'], ['url', '公众号主页链接（用于生成二维码）', 'https://mp.weixin.qq.com/…']];
+      inputs.forEach(([key, labelText, placeholder]) => {
+        const label = el('label', '', labelText);
+        const input = el('input');
+        input.id = 'social-' + index + '-' + key;
+        input.type = key === 'url' ? 'url' : 'text';
+        input.maxLength = key === 'url' ? 2048 : 40;
+        input.placeholder = placeholder;
+        input.value = item[key];
+        label.append(input);
+        fieldset.append(label);
+      });
+      fields.append(fieldset);
+    });
+    error('social-error');
+    $('social-dialog').showModal();
+    const selected = state.socials.findIndex((item) => item.type === platform);
+    if (selected >= 0) $('social-' + selected + '-url').focus();
+  }
+
+  async function api(path, options = {}) {
+    let response;
+    try { response = await fetch(path, { credentials: 'same-origin', cache: 'no-store', ...options }); }
+    catch { throw new Error('网络连接失败，修改仍保留在当前页面，请重试。'); }
+    let result;
+    try { result = await response.json(); } catch { throw new Error('服务器暂时无法响应，请稍后重试。'); }
+    if (!response.ok) {
+      if (response.status === 401) adminAuthenticated = false;
+      throw new Error(result.error || '操作未完成，请重试。');
+    }
+    return result;
+  }
+
+  let refreshingPublicContent = false;
+  async function refreshPublicContent() {
+    if (refreshingPublicContent) return;
+    refreshingPublicContent = true;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    try {
+      const response = await fetch(contentOrigin + '/api/content', { credentials: 'omit', cache: 'no-store', signal: controller.signal });
+      if (!response.ok) throw new Error('Content unavailable');
+      const result = await response.json();
+      if (!result.state?.profile || !Array.isArray(result.state.articles) || !Array.isArray(result.state.projects) || !Array.isArray(result.state.socials)) throw new Error('Invalid content');
+      Object.assign(state, result.state);
+      render();
+    } catch {
+      // The bundled publication remains readable if the content service is offline.
+    } finally { clearTimeout(timeout); refreshingPublicContent = false; }
+  }
+
+  function openAdminLogin() {
+    error('admin-error');
+    $('admin-dialog').showModal();
+    $('admin-password').focus();
+  }
+
+  function setEditing(editing) {
+    document.body.dataset.editing = String(editing);
+    renderSocials();
+    requestAnimationFrame(updateArticleNavigation);
+    const footerButton = document.querySelector('.footer-edit');
+    footerButton.textContent = editing ? '预览网页' : hosted ? '管理网站' : '编辑网页';
+    footerButton.setAttribute('aria-pressed', String(editing));
+  }
+
+  function imageFields(snapshot) {
+    return [[snapshot.profile, 'image'], ...snapshot.projects.map(p => [p, 'image']), [snapshot.socials[0], 'qrImage']];
+  }
+
+  function dataBlob(data) {
+    const comma = data.indexOf(',');
+    const mime = data.slice(5, data.indexOf(';'));
+    const binary = atob(data.slice(comma + 1));
+    return new Blob([Uint8Array.from(binary, c => c.charCodeAt(0))], { type: mime });
+  }
+
+  async function portableSnapshot(snapshot) {
+    for (const [object, key] of imageFields(snapshot)) {
+      if (!object[key]?.startsWith('/media/')) continue;
+      const response = await fetch(object[key]);
+      if (!response.ok) throw new Error('部分图片暂时无法下载，请重试导出。');
+      const blob = await response.blob();
+      object[key] = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error('图片导出失败。'));
+        reader.readAsDataURL(blob);
+      });
+    }
+    return snapshot;
+  }
+
+  async function saveOnline() {
+    if (!adminAuthenticated) { openAdminLogin(); return; }
+    if (pendingImages) { toast('正在读取图片，请稍等再保存。'); return; }
+    const button = $('save-site');
+    if (button.disabled) return;
+    const savingRevision = revision;
+    const snapshot = JSON.parse(JSON.stringify(state));
+    button.disabled = true;
+    button.textContent = '正在保存…';
+    try {
+      for (const [object, key] of imageFields(snapshot)) {
+        if (!object[key]?.startsWith('data:')) continue;
+        const blob = dataBlob(object[key]);
+        const result = await api('/api/media', { method: 'POST', headers: { 'Content-Type': blob.type }, body: blob });
+        object[key] = result.url;
+      }
+      const result = await api('/api/content', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ state: snapshot, revision: contentRevision }) });
+      contentRevision = result.revision;
+      savedRevision = savingRevision;
+      dirty = revision !== savingRevision;
+      if (!dirty) { Object.assign(state, result.state); render(); }
+      $('save-status').textContent = dirty ? '已保存；还有新修改待发布' : '已保存到网站 · 访客现在可以看到';
+      toast(dirty ? '网站已更新，刚刚新增的修改还需再保存一次。' : '网站已更新，文章、文字和照片已保存。');
+    } catch (exception) {
+      $('save-status').textContent = '保存未完成 · 当前修改仍在，请重试';
+      toast(exception.message);
+      if (!adminAuthenticated) openAdminLogin();
+    } finally { button.disabled = false; button.textContent = '保存到网站'; }
+  }
+
+  function makeHtml(snapshot) {
+    const json = JSON.stringify(snapshot).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
+    let found = false;
+    const html = sourceDocument.replace(/(<script id="site-data" type="application\/json">)[\s\S]*?(<\/script>)/, (_, start, end) => {
+      found = true;
+      return start + json + end;
+    });
+    if (!found) throw new Error('无法生成网页文件，请保留当前页面后重试。');
+    return html.replace(/(<body\b[^>]*\bdata-editing=)"(?:true|false)"/, '$1"false"')
+      .replace(/(<body\b[^>]*?)\sdata-server="true"/, '$1');
+  }
+
+  async function saveSite() {
+    const button = hosted ? $('export-site') : $('save-site');
+    if (button.disabled) return;
+    button.disabled = true;
+    button.textContent = '正在保存…';
+    const savingRevision = revision;
+    const snapshot = JSON.parse(JSON.stringify(state));
+    try {
+      const suggestedName = (state.profile.heroName.replace(/[^\p{L}\p{N}_-]/gu, '-') || 'personal-site') + '-个人网站.html';
+      // Invoke the picker directly from the click gesture. File bytes are durable storage.
+      if (typeof window.showSaveFilePicker === 'function') {
+        if (!fileHandle) fileHandle = await window.showSaveFilePicker({ suggestedName, types: [{ description: 'HTML 网页', accept: { 'text/html': ['.html'] } }] });
+        const html = makeHtml(await portableSnapshot(snapshot));
+        const writable = await fileHandle.createWritable();
+        try { await writable.write(html); await writable.close(); }
+        catch (exception) { try { await writable.abort(); } catch {} throw exception; }
+        toast('网页文件已保存，作品和图片已包含在内。');
+        $('save-status').textContent = '已保存到网页文件';
+      } else {
+        const html = makeHtml(await portableSnapshot(snapshot));
+        const url = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
+        const link = el('a');
+        link.href = url;
+        link.download = suggestedName;
+        document.body.append(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+        toast('已发起下载。请保留新 HTML 文件，后续打开它继续编辑。');
+        $('save-status').textContent = '已导出，请确认新 HTML 文件已保存';
+      }
+      if (!hosted) {
+        savedRevision = savingRevision;
+        dirty = revision !== savedRevision;
+        if (dirty) $('save-status').textContent = '还有新修改，请再次保存网页';
+      } else $('save-status').textContent = dirty ? '已导出备份；修改仍需保存到网站' : '已导出 HTML 备份';
+    } catch (exception) {
+      if (exception.name !== 'AbortError') toast('保存未完成，内容仍保留在当前页面。' + (exception.message || '请重试。'));
+    } finally {
+      button.disabled = false;
+      button.textContent = hosted ? '导出 HTML' : '保存网页';
+    }
+  }
+
+  document.addEventListener('click', (event) => {
+    const close = event.target.closest('[data-close]');
+    if (close) { close.closest('dialog').close(); return; }
+    const trigger = event.target.closest('[data-action]');
+    if (!trigger) return;
+    const action = trigger.dataset.action;
+    if (action === 'add-project') openProject();
+    if (action === 'edit-project') openProject(trigger.dataset.id);
+    if (action === 'edit-about') openAbout();
+    if (action === 'add-article') openArticle();
+    if (action === 'edit-article') openArticle(trigger.dataset.id);
+    if (action === 'show-wechat') openWechat();
+    if (action === 'scroll-articles') {
+      const list = $('article-list');
+      list.scrollBy({ left: Number(trigger.dataset.direction) * ((list.firstElementChild?.getBoundingClientRect().width || 360) + 24), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+    if (action === 'edit-social') openSocial(trigger.dataset.platform);
+    if (action === 'save-site') hosted ? saveOnline() : saveSite();
+    if (action === 'export-site') saveSite();
+    if (action === 'admin-logout') {
+      if (dirty) { toast('请先保存到网站或导出 HTML，再退出管理。'); return; }
+      api('/api/logout', { method: 'POST' }).then(() => {
+        adminAuthenticated = false; setEditing(false); toast('已退出管理。');
+      }).catch(exception => toast(exception.message));
+    }
+    if (action === 'toggle-edit') {
+      if (publicMirror) { location.assign(contentOrigin + '/admin'); return; }
+      if (hosted && !adminAuthenticated) { openAdminLogin(); return; }
+      const editing = document.body.dataset.editing !== 'true';
+      setEditing(editing);
+      if (!editing) toast(dirty ? '正在预览。修改尚未保存；可在页脚重新进入编辑。' : '正在预览。可在页脚点击“编辑网页”继续修改。');
+    }
+    if (action === 'remove-project-image') {
+      projectImageSequence += 1;
+      projectImage = '';
+      $('project-image').value = '';
+      previewImage('project-image-preview', '');
+    }
+    if (action === 'remove-profile-image') {
+      profileImageSequence += 1;
+      profileImage = '';
+      $('profile-image').value = '';
+      previewImage('profile-image-preview', '');
+    }
+    if (action === 'remove-wechat-qr') {
+      wechatQrSequence += 1;
+      wechatQrImage = '';
+      $('wechat-qr-image').value = '';
+      previewImage('wechat-qr-image-preview', '');
+    }
+    if (action === 'delete-project' || action === 'delete-article') {
+      deletingKind = action === 'delete-article' ? 'articles' : 'projects';
+      const item = state[deletingKind].find((item) => item.id === trigger.dataset.id);
+      if (!item) return;
+      deletingId = item.id;
+      $('delete-title').textContent = deletingKind === 'articles' ? '移除这篇文章？' : '删除这件作品？';
+      $('delete-description').textContent = '“' + item.title + '”将从网站中移除。';
+      $('delete-dialog').showModal();
+    }
+  });
+
+  $('confirm-delete').addEventListener('click', () => {
+    const index = state[deletingKind].findIndex((item) => item.id === deletingId);
+    if (index < 0) return;
+    state[deletingKind].splice(index, 1);
+    deletingId = '';
+    $('delete-dialog').close();
+    markChanged(deletingKind === 'articles' ? '文章已移除' : '作品已删除');
+  });
+
+  $('article-list').addEventListener('scroll', updateArticleNavigation, { passive: true });
+  window.addEventListener('resize', updateArticleNavigation);
+  $('wechat-dialog').addEventListener('click', (event) => {
+    if (event.target !== event.currentTarget) return;
+    const r = event.currentTarget.getBoundingClientRect();
+    if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) event.currentTarget.close();
+  });
+
+  $('wechat-qr-image').addEventListener('change', async (event) => {
+    const sequence = ++wechatQrSequence;
+    pendingImages += 1;
+    error('social-error');
+    try {
+      const data = await readImage(event.target.files[0]);
+      if (sequence !== wechatQrSequence) return;
+      wechatQrImage = data;
+      previewImage('wechat-qr-image-preview', data);
+    } catch (exception) { error('social-error', exception.message); event.target.value = ''; }
+    finally { pendingImages -= 1; }
+  });
+
+  $('article-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    error('article-error');
+    try {
+      const title = $('article-title').value.trim();
+      const summary = $('article-summary').value.trim();
+      const url = safeLink($('article-url').value);
+      if (!title || !summary || !url) throw new Error('请填写文章标题、摘要和原文链接。');
+      const id = $('article-id').value || (globalThis.crypto?.randomUUID ? crypto.randomUUID() : 'article-' + Date.now() + '-' + Math.random().toString(16).slice(2));
+      const article = { id, title, summary, url, date: $('article-date').value };
+      const index = state.articles.findIndex((item) => item.id === id);
+      if (index < 0) state.articles.unshift(article);
+      else state.articles[index] = article;
+      $('article-dialog').close();
+      markChanged(index < 0 ? '文章已添加' : '文章已更新');
+    } catch (exception) { error('article-error', exception.message); }
+  });
+
+  ['project', 'profile'].forEach((kind) => {
+    $(kind + '-image').addEventListener('change', async (event) => {
+      const errorId = kind === 'project' ? 'project-error' : 'about-error';
+      error(errorId);
+      const sequence = kind === 'project' ? ++projectImageSequence : ++profileImageSequence;
+      pendingImages += 1;
+      try {
+        const data = await readImage(event.target.files[0]);
+        if (sequence !== (kind === 'project' ? projectImageSequence : profileImageSequence)) return;
+        if (kind === 'project') projectImage = data;
+        else profileImage = data;
+        previewImage(kind + '-image-preview', data);
+      } catch (exception) { error(errorId, exception.message); event.target.value = ''; }
+      finally { pendingImages -= 1; }
+    });
+  });
+
+  $('project-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    error('project-error');
+    if (pendingImages) return error('project-error', '正在读取图片，请稍等片刻再应用。');
+    try {
+      const title = $('project-title').value.trim();
+      if (!title) throw new Error('请填写作品名称。');
+      const id = $('project-id').value || (globalThis.crypto?.randomUUID ? crypto.randomUUID() : 'project-' + Date.now() + '-' + Math.random().toString(16).slice(2));
+      const project = { id, title, category: $('project-category').value.trim(), description: $('project-description').value.trim(), url: safeLink($('project-url').value), image: projectImage };
+      const index = state.projects.findIndex((item) => item.id === id);
+      if (index < 0) state.projects.push(project);
+      else state.projects[index] = project;
+      $('project-dialog').close();
+      markChanged(index < 0 ? '作品已添加' : '作品已更新');
+    } catch (exception) { error('project-error', exception.message); }
+  });
+
+  $('about-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    error('about-error');
+    if (pendingImages) return error('about-error', '正在读取图片，请稍等片刻再应用。');
+    const profile = {};
+    ['name', 'heroName', 'tagline', 'heading', 'bio', 'note', 'email'].forEach((key) => { profile[key] = $('profile-' + key).value.trim(); });
+    if (!profile.name || !profile.heroName || !profile.heading || !profile.bio) return error('about-error', '请填写姓名、首页名称、简介标题和个人介绍。');
+    profile.image = profileImage;
+    state.profile = profile;
+    $('about-dialog').close();
+    markChanged('个人简介已更新');
+  });
+
+  $('social-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    error('social-error');
+    if (pendingImages) return error('social-error', '正在读取二维码图片，请稍等片刻再应用。');
+    try {
+      const socials = state.socials.map((item, index) => {
+        const name = $('social-' + index + '-name').value.trim();
+        const url = safeLink($('social-' + index + '-url').value);
+        const fallbackName = item.type === 'github' ? 'GitHub' : 'OM创意工坊';
+        if (url && !name) throw new Error('请填写' + (item.type === 'github' ? 'GitHub 显示名称。' : '公众号名称。'));
+        return { type: item.type, name: name || fallbackName, url, ...(item.type === 'wechat' ? { qrImage: wechatQrImage } : {}) };
+      });
+      state.socials = socials;
+      $('social-dialog').close();
+      markChanged('社交链接已更新');
+    } catch (exception) { error('social-error', exception.message); }
+  });
+
+  window.addEventListener('beforeunload', (event) => {
+    if (!dirty) return;
+    event.preventDefault();
+    event.returnValue = '';
+  });
+
+  $('admin-form').addEventListener('submit', async event => {
+    event.preventDefault();
+    const button = $('admin-submit');
+    if (button.disabled) return;
+    button.disabled = true; error('admin-error');
+    try {
+      await api('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: $('admin-password').value }) });
+      adminAuthenticated = true;
+      $('admin-password').value = '';
+      $('admin-dialog').close();
+      setEditing(true);
+      toast('已进入管理模式。添加文章后，点击“保存到网站”。');
+    } catch (exception) { error('admin-error', exception.message); }
+    finally { button.disabled = false; }
+  });
+
+  document.querySelectorAll('img').forEach((img) => {
+    const src = img.getAttribute('src') || '';
+    if (src.includes('om-titanium-hero.png')) attachFallback(img, 'hero');
+    else if (src.includes('editorial-notebook.png')) attachFallback(img, 'work');
+  });
+  $('year').textContent = String(new Date().getFullYear());
+  const editing = document.body.dataset.editing === 'true';
+  document.querySelector('.footer-edit').textContent = editing ? '预览网页' : hosted || publicMirror ? '管理网站' : '编辑网页';
+  document.querySelector('.footer-edit').setAttribute('aria-pressed', String(editing));
+  if (hosted) {
+    $('save-site').textContent = '保存到网站';
+    $('save-status').textContent = '修改后保存到网站，访客即可看到';
+    $('export-site').hidden = false;
+    $('admin-logout').hidden = false;
+    document.querySelectorAll('.save-hint').forEach(node => { node.textContent = '应用后，点击底部“保存到网站”，即可更新线上内容。'; });
+    if (serverState.publicUrl) {
+      $('public-site-link').href = safeLink(serverState.publicUrl);
+      $('public-site-link').hidden = false;
+    }
+  }
+  render();
+  if (publicMirror) {
+    refreshPublicContent();
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') refreshPublicContent(); });
+  }
+  if (hosted && /^\/admin\/?$/.test(location.pathname)) {
+    if (adminAuthenticated) setEditing(true);
+    else openAdminLogin();
+  }
+})();
+
+  </script>
+</body>
+</html>
