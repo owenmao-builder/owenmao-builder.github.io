@@ -14,7 +14,8 @@
 <script>
 const origin="https://weiming-6969rwwgpjvrc4pv6-4354.app.github.dev";
 const frame=document.querySelector('#game'),direct=document.querySelector('#direct');
-function connect(){const target=new URL(origin+'/');target.hash=location.hash;direct.href=target.href;frame.src=target.href;}
+// Codespaces' first-visit confirmation cannot reliably retain cookies inside an iframe.
+function connect(){const target=new URL(origin+'/');target.hash=location.hash;direct.href=target.href;if(target.hostname.endsWith('.app.github.dev')){window.location.replace(target.href);return;}frame.src=target.href;}
 frame.addEventListener('load',()=>document.querySelector('#waiting').hidden=true);
 window.addEventListener('hashchange',connect);connect();
 document.querySelector('#share').addEventListener('click',async()=>{const link="https://owenmao-builder.github.io/hai-gui-tang/";try{await navigator.clipboard.writeText(link);document.querySelector('#notice').textContent='已复制';setTimeout(()=>document.querySelector('#notice').textContent='',2500);}catch{window.prompt('复制游戏入口',link);}});
