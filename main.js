@@ -485,6 +485,18 @@ const dictionary = {
     "zh": "搭 RAG 知识库、工作流与 Agent 原型",
     "en": "Build RAG knowledge bases, workflows and Agent prototypes"
   },
+  "toolGrok": {
+    "zh": "对话式 AI 助手",
+    "en": "A conversational AI assistant"
+  },
+  "toolMuse": {
+    "zh": "个人 AI 助手",
+    "en": "A personal AI assistant"
+  },
+  "toolObsidian": {
+    "zh": "本地笔记与知识库",
+    "en": "Local notes and a knowledge base"
+  },
   "toolsTitle": {
     "zh": "常用 AI 工具",
     "en": "AI toolkit"
@@ -646,8 +658,8 @@ const dictionary = {
     "en": "Beauty"
   },
   "arden_role": {
-    "zh": "Agent 产品负责人，5 人团队，主导场景定义、链路设计、评测体系与交付定价全流程",
-    "en": "Agent Product Lead on a 5-person team, owning scenario definition, pipeline design, evaluation and delivery pricing end to end"
+    "zh": "Agent 产品负责人，主导场景定义、链路设计、评测体系与交付定价全流程",
+    "en": "Agent Product Lead, owning scenario definition, pipeline design, evaluation and delivery pricing end to end"
   },
   "arden_problem": {
     "zh": "德勤为雅顿交付。胶囊精华线多平台高频上新，主图与种草短视频长期依赖外包拍摄，周期长、成本高。主导将素材生产重构为 AI 批量生成、评测把关、品牌终审的标准化流程，协同品牌方与投放团队完成切换，兼顾规模化供给与品牌安全。",
