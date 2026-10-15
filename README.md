@@ -2,10 +2,15 @@
 
 访问：https://owenmao-builder.github.io/
 
-GitHub Pages 托管公开展示页，访客无需登录。页面打开时读取现有后台的最新文章、作品与个人介绍；后台暂时不可用时，仍显示仓库中保存的内容快照。
+GitHub Pages 从 `main` 分支根目录发布这个静态站点。`.nojekyll` 让 Pages 按文件原样发布，不经过 Jekyll。
 
-管理入口：https://owenmao-builder.github.io/admin/
+当前首页是个人空间，包含项目、文章、作品和联系方式。页面文件在仓库根目录：`index.html`、`style.css`、`main.js`、`fx.css` 和 `fx-*.js`。交互演示在 `demos/`（万豪、蔡司、金赛）。
 
-管理入口会打开现有密码后台。添加文章并点击“保存到网站”后，重新打开或刷新本网站即可看到最新内容，无需再提交 GitHub。管理密码与访问凭证不存放在此仓库。
+`legacy/index.html` 是 2026-10-15 替换前的首页。它和当前首页共用根目录 `assets/`。旧图是 `om-titanium-hero.png` 与 `editorial-notebook.png`，新图是头像、图标和二维码，两边没有重名文件。旧首页中的图片地址写成 `../assets/`，从 `/legacy/` 打开时仍能加载这些图。
 
-文件：`index.html` 包含页面结构、样式、交互与初始内容；`assets/` 保存默认图片；`.nojekyll` 让 GitHub Pages 直接发布静态 HTML。
+保留的其他入口：
+
+- `admin/`：跳转到原管理后台
+- `hai-gui-tang/`：海龟汤游戏入口
+
+`/portfolio/`、`/expense-hearing/` 等地址由其他仓库的 GitHub Pages 提供，不在本仓库中。
