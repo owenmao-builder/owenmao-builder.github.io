@@ -89,14 +89,6 @@ const dictionary = {
     "zh": "请选中邮箱地址并手动复制",
     "en": "Please select the email address and copy it manually"
   },
-  "demo": {
-    "zh": "看交互 Demo ↗",
-    "en": "Explore the demo ↗"
-  },
-  "demoNotice": {
-    "zh": "Demo 为基于项目场景自建的演示原型，数据为示例",
-    "en": "This demo is a self-built prototype based on the project scenario. The data is sample data."
-  },
   "details": {
     "zh": "查看介绍 →",
     "en": "View project →"
@@ -208,34 +200,6 @@ const dictionary = {
   "intro": {
     "zh": "在德勤技术与转型团队做顾问和项目经理，从富士康的仓储系统、金赛药业的质量流程，一路做到蔡司的质量知识问答和数据查询 Agent、雅顿美妆线 AIGC 内容生产 Agent、德勤资深顾问经验蒸馏与 Fit-Gap 方案初稿 Agent。我习惯先把业务问题拆到流程、字段和规则这一层，再决定哪些交给模型、哪些交给规则和受控接口。现在想专注做 ToB 的 AI 产品：企业知识应用、Agent 和业务流程智能化。",
     "en": "I work as a consultant and project manager in Deloitte’s Technology & Transformation team, from Foxconn’s warehouse systems and Jinsai’s quality processes to ZEISS’s quality knowledge Q&A and data query Agent, Elizabeth Arden’s beauty-line AIGC content production Agent, and Deloitte’s senior-consultant experience distillation and Fit-Gap first-draft Agent. I start by breaking business problems down into processes, fields and rules, then decide what to hand over to models, rules and controlled interfaces. I now want to focus on AI products for businesses: enterprise knowledge applications, Agents and intelligent business processes."
-  },
-  "jinsai_approach": {
-    "zh": "经短期带教后独立负责受 FDA 监管的质量模块，主导调研、URS 方案、配置测试、培训到上线切换全流程。",
-    "en": "After brief onboarding, independently owned the FDA-regulated quality module, leading research, URS solution design, configuration and testing, training and go-live cutover."
-  },
-  "jinsai_client": {
-    "zh": "金赛药业",
-    "en": "Jinsai Pharma"
-  },
-  "jinsai_industry": {
-    "zh": "生物制药",
-    "en": "Biopharmaceuticals"
-  },
-  "jinsai_outcome": {
-    "zh": "质量模块如期上线并满足 FDA 合规要求，系统自动计算取样量与取样 HU，实现批次级追溯。",
-    "en": "The quality module went live on schedule and met FDA compliance requirements; the system calculates sample sizes and sampling HUs automatically, enabling batch-level traceability."
-  },
-  "jinsai_problem": {
-    "zh": "生物制药客户需要搭建符合 FDA 要求的平台，规划质量部门流程并在系统中落地。",
-    "en": "A biopharmaceutical client needed a platform meeting FDA requirements, with quality department processes planned and implemented in the system."
-  },
-  "jinsai_role": {
-    "zh": "金赛质量模块负责人",
-    "en": "Jinsai quality module lead"
-  },
-  "jinsai_title": {
-    "zh": "企业系统实施与数据治理（金赛 FDA 质量模块）",
-    "en": "Enterprise system implementation and data governance (Jinsai FDA quality module)"
   },
   "lang_label": {
     "zh": "语言",
@@ -369,10 +333,6 @@ const dictionary = {
     "zh": "结果（定性）",
     "en": "Outcome"
   },
-  "page_jinsai": {
-    "zh": "金赛药业｜企业系统实施与数据治理（FDA 质量模块）",
-    "en": "Jinsai Pharma | Enterprise system implementation and data governance (FDA quality module)"
-  },
   "page_marriott": {
     "zh": "万豪酒店｜中国区集中采购平台规划",
     "en": "Marriott Hotels | China centralized procurement platform planning"
@@ -444,10 +404,6 @@ const dictionary = {
   "role": {
     "zh": "AI产品负责人/FDE前沿部署工程师",
     "en": "AI Product Lead / Forward Deployed Engineer (FDE)"
-  },
-  "sample": {
-    "zh": "演示用示例数据",
-    "en": "Sample data for demonstration"
   },
   "scan": {
     "zh": "微信扫一扫，关注 OM创意工坊",

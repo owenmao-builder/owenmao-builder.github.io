@@ -268,7 +268,6 @@ p { font-size: 1rem; line-height: 1.5; }
 .tile h2 { margin-block: 10px 6px; }
 .tile--work h2 { margin-block-start: 0; }
 .tile > p { margin-block-end: 16px; color: var(--c-soft); }
-.tile > p.tile-note { margin: -4px 0 14px; font-size: 12px; color: var(--c-quiet); }
 .tile-meta, .tile-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; line-height: 1.43; color: var(--c-soft); }
 .tile-meta { flex-wrap: wrap; gap: 6px 12px; }
 .tile-meta > :last-child, .tile-meta time { color: var(--c-quiet); font-variant-numeric: tabular-nums; }
@@ -288,18 +287,6 @@ p { font-size: 1rem; line-height: 1.5; }
 .facts dt { color: var(--c-quiet); }
 .facts dd { margin: 0; }
 
-.callout {
-  margin-block-end: 24px;
-  padding: 12px 16px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--c-soft);
-  background: var(--c-rail);
-  border: 1px solid var(--c-rule);
-  border-radius: var(--round);
-}
-.callout--demo > p { margin-block-start: 10px; font-size: 13px; line-height: 1.6; }
-.demo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .btn {
   display: inline-flex;
   align-items: center;
@@ -311,8 +298,6 @@ p { font-size: 1rem; line-height: 1.5; }
   border: 1px solid var(--c-rule);
   border-radius: var(--round);
 }
-.sample-tag { font-size: 12px; color: var(--c-soft); }
-
 .body-copy { min-inline-size: 0; overflow-wrap: anywhere; }
 .body-copy h2 { margin-block: 24px 10px; }
 .body-copy p { margin-block-end: 12px; line-height: 1.65; color: var(--c-soft); }
